@@ -1,0 +1,29 @@
+# Composer
+vendor/
+composer.phar
+
+# PHPUnit
+.phpunit.cache/
+.phpunit.result.cache
+
+# Node tooling (if added later)
+node_modules/
+build/
+dist/
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# OS / temp
+Thumbs.db
+*.log
+*.tmp
+
+# Compiled .mo from .po (rebuild on release)
+languages/*.mo
+
+# Local-only artefacts
+.local/

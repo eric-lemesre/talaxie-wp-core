@@ -1,0 +1,41 @@
+{
+    "name": "eric-lemesre/talaxie-wp-core",
+    "description": "Companion WordPress plugin for the Talaxie community website (custom post types, taxonomies, REST endpoints, integrations).",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "homepage": "https://talaxie.org",
+    "support": {
+        "issues": "https://github.com/eric-lemesre/talaxie-wp-core/issues",
+        "source": "https://github.com/eric-lemesre/talaxie-wp-core"
+    },
+    "require": {
+        "php": ">=8.1"
+    },
+    "require-dev": {
+        "wp-coding-standards/wpcs": "^3.1",
+        "phpcompatibility/phpcompatibility-wp": "^2.1",
+        "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+        "phpunit/phpunit": "^10.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Talaxie\\Core\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Talaxie\\Core\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        },
+        "sort-packages": true
+    },
+    "scripts": {
+        "lint": "phpcs",
+        "lint:fix": "phpcbf",
+        "test": "phpunit"
+    }
+}

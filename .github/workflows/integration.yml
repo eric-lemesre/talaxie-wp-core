@@ -1,0 +1,121 @@
+name: Plugin integration
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  structure:
+    name: Required files & metadata
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify required files
+        run: |
+          set -e
+          for f in talaxie-core.php uninstall.php readme.txt LICENSE composer.json src/Plugin.php; do
+            if [ ! -f "$f" ]; then
+              echo "::error::Missing required file: $f"
+              exit 1
+            fi
+          done
+          echo "All required files present."
+
+      - name: Verify plugin header
+        run: |
+          set -e
+          for header in "Plugin Name" "Version" "License" "Text Domain" "Requires at least" "Requires PHP"; do
+            if ! grep -q " \* $header:" talaxie-core.php; then
+              echo "::error::Missing required plugin header: $header"
+              exit 1
+            fi
+          done
+          echo "All required plugin headers present."
+
+  smoke:
+    name: WordPress smoke test (plugin activates without fatal)
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mariadb:11
+        env:
+          MARIADB_ROOT_PASSWORD: root
+          MARIADB_DATABASE: wordpress
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="healthcheck.sh --connect --innodb_initialized"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+
+    steps:
+      - name: Checkout plugin
+        uses: actions/checkout@v4
+        with:
+          path: talaxie-core
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          extensions: mysqli, mbstring, xml, zip
+          tools: wp-cli, composer:v2
+          coverage: none
+
+      - name: Install Composer deps inside the plugin
+        working-directory: talaxie-core
+        run: composer install --no-interaction --prefer-dist --no-dev
+
+      - name: Wait for MariaDB
+        run: |
+          for i in {1..30}; do
+            if mysqladmin ping -h 127.0.0.1 -P 3306 -uroot -proot --silent; then
+              echo "MariaDB is ready"; break
+            fi
+            sleep 2
+          done
+
+      - name: Download WordPress
+        run: |
+          mkdir wp && cd wp
+          wp core download --version=latest --allow-root
+          wp config create --dbname=wordpress --dbuser=root --dbpass=root --dbhost=127.0.0.1:3306 --allow-root
+          wp core install --url=http://localhost --title="Smoke" \
+            --admin_user=admin --admin_password=admin --admin_email=admin@localhost \
+            --skip-email --allow-root
+
+      - name: Install plugin into WP
+        run: cp -R "$GITHUB_WORKSPACE/talaxie-core" wp/wp-content/plugins/talaxie-core
+
+      - name: Activate plugin
+        working-directory: wp
+        run: |
+          wp plugin activate talaxie-core --allow-root
+          if ! wp plugin is-active talaxie-core --allow-root; then
+            echo "::error::talaxie-core failed to activate"
+            exit 1
+          fi
+          echo "Plugin activated."
+
+      - name: Verify post types & taxonomy registered
+        working-directory: wp
+        run: |
+          set -e
+          for type in talaxie_release talaxie_contributor; do
+            if ! wp post-type list --field=name --allow-root | grep -q "^$type$"; then
+              echo "::error::Custom post type not registered: $type"
+              exit 1
+            fi
+          done
+          if ! wp taxonomy list --field=name --allow-root | grep -q "^talaxie_component$"; then
+            echo "::error::Custom taxonomy not registered: talaxie_component"
+            exit 1
+          fi
+          echo "All custom types and taxonomy registered."

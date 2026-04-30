@@ -1,0 +1,58 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Talaxie Core 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/eric-lemesre/talaxie-wp-core/issues\n"
+"POT-Creation-Date: 2026-04-30 00:00+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: wp i18n make-pot\n"
+"X-Domain: talaxie-core\n"
+"Language: \n"
+
+#. Activation notice when vendor/autoload.php is missing.
+msgid "Talaxie Core: vendor/autoload.php is missing. Run \"composer install\" inside the plugin folder."
+msgstr ""
+
+#. Release post type labels.
+msgctxt "post type general name"
+msgid "Releases"
+msgstr ""
+
+msgctxt "post type singular name"
+msgid "Release"
+msgstr ""
+
+#. Contributor post type labels.
+msgctxt "post type general name"
+msgid "Contributors"
+msgstr ""
+
+msgctxt "post type singular name"
+msgid "Contributor"
+msgstr ""
+
+#. Component taxonomy labels.
+msgctxt "taxonomy general name"
+msgid "Components"
+msgstr ""
+
+msgctxt "taxonomy singular name"
+msgid "Component"
+msgstr ""
+
+#. Generic CPT labels reused across release/contributor.
+msgid "Add new"
+msgstr ""
+
+#. Release CPT description.
+msgid "Talaxie public releases (binaries, changelogs, milestones)."
+msgstr ""
+
+#. Contributor CPT description.
+msgid "Members of the Talaxie community recognized for their contributions."
+msgstr ""
+
+#. Component taxonomy description.
+msgid "Talaxie components (e.g. tCore, tDBInput, tFileInputDelimited)."
+msgstr ""
