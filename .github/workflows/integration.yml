@@ -88,7 +88,7 @@ jobs:
           wp core download --version=latest --allow-root
           wp config create --dbname=wordpress --dbuser=root --dbpass=root --dbhost=127.0.0.1:3306 --allow-root
           wp core install --url=http://localhost --title="Smoke" \
-            --admin_user=admin --admin_password=admin --admin_email=admin@localhost \
+            --admin_user=admin --admin_password=admin --admin_email=admin@example.com \
             --skip-email --allow-root
 
       - name: Install plugin into WP
