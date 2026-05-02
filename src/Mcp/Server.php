@@ -11,6 +11,11 @@ namespace Talaxie\Core\Mcp;
 
 use Talaxie\Core\Mcp\Abilities\AbilityInterface;
 use Talaxie\Core\Mcp\Abilities\Audit\ListAudit;
+use Talaxie\Core\Mcp\Abilities\Pages\CreatePage;
+use Talaxie\Core\Mcp\Abilities\Pages\DeletePage;
+use Talaxie\Core\Mcp\Abilities\Pages\GetPage;
+use Talaxie\Core\Mcp\Abilities\Pages\ListPages;
+use Talaxie\Core\Mcp\Abilities\Pages\UpdatePage;
 use Talaxie\Core\Mcp\Abilities\Posts\CreatePost;
 use Talaxie\Core\Mcp\Abilities\Posts\GetPost;
 use Talaxie\Core\Mcp\Abilities\Posts\ListPosts;
@@ -66,6 +71,11 @@ final class Server {
 			GetPost::class,
 			CreatePost::class,
 			UpdatePost::class,
+			ListPages::class,
+			GetPage::class,
+			CreatePage::class,
+			UpdatePage::class,
+			DeletePage::class,
 			ListAudit::class,
 		);
 	}
