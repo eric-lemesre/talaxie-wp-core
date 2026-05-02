@@ -24,9 +24,13 @@ defined( 'ABSPATH' ) || exit;
 final class CapabilityGate {
 
 	public const SUDO_INPUT_KEY = '_sudo';
+	public const VIRTUAL_SUPER_ADMIN = 'super_admin';
 
 	/**
 	 * Run the capability check for an ability.
+	 *
+	 * Accepts the virtual capability `super_admin` for multisite-only
+	 * abilities — it is not a real WP cap, so it must be handled here.
 	 *
 	 * @param string                $ability_name Fully qualified ability slug.
 	 * @param string                $required_cap Capability the ability needs.
@@ -35,7 +39,7 @@ final class CapabilityGate {
 	 * @return bool|\WP_Error true on success, WP_Error on permission denial.
 	 */
 	public static function check( string $ability_name, string $required_cap, array $input ) {
-		if ( current_user_can( $required_cap ) ) {
+		if ( self::has_native_capability( $required_cap ) ) {
 			self::audit( $ability_name, $required_cap, false, true );
 			return true;
 		}
@@ -76,6 +80,20 @@ final class CapabilityGate {
 	 *
 	 * @return void
 	 */
+	/**
+	 * Native capability check that also understands the virtual super_admin.
+	 *
+	 * @param string $cap Capability slug.
+	 *
+	 * @return bool
+	 */
+	private static function has_native_capability( string $cap ): bool {
+		if ( self::VIRTUAL_SUPER_ADMIN === $cap ) {
+			return is_multisite() && is_super_admin( get_current_user_id() );
+		}
+		return current_user_can( $cap );
+	}
+
 	private static function audit( string $ability_name, string $required_cap, bool $sudo_used, bool $allowed ): void {
 		do_action(
 			'talaxie_mcp_audit',

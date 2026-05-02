@@ -11,14 +11,19 @@ namespace Talaxie\Core\Mcp;
 
 use Talaxie\Core\Mcp\Abilities\AbilityInterface;
 use Talaxie\Core\Mcp\Abilities\Audit\ListAudit;
+use Talaxie\Core\Mcp\Abilities\Generic\RestCall;
 use Talaxie\Core\Mcp\Abilities\Media\DeleteMedia;
 use Talaxie\Core\Mcp\Abilities\Media\ListMedia;
 use Talaxie\Core\Mcp\Abilities\Media\UploadMedia;
+use Talaxie\Core\Mcp\Abilities\Network\CreateSite;
+use Talaxie\Core\Mcp\Abilities\Network\DeleteSite;
 use Talaxie\Core\Mcp\Abilities\Pages\CreatePage;
 use Talaxie\Core\Mcp\Abilities\Pages\DeletePage;
 use Talaxie\Core\Mcp\Abilities\Pages\GetPage;
 use Talaxie\Core\Mcp\Abilities\Pages\ListPages;
 use Talaxie\Core\Mcp\Abilities\Pages\UpdatePage;
+use Talaxie\Core\Mcp\Abilities\Plugins\ActivatePlugin;
+use Talaxie\Core\Mcp\Abilities\Plugins\ListPlugins;
 use Talaxie\Core\Mcp\Abilities\Posts\CreatePost;
 use Talaxie\Core\Mcp\Abilities\Posts\GetPost;
 use Talaxie\Core\Mcp\Abilities\Posts\ListPosts;
@@ -29,6 +34,12 @@ use Talaxie\Core\Mcp\Abilities\Releases\GetRelease;
 use Talaxie\Core\Mcp\Abilities\Releases\ListReleases;
 use Talaxie\Core\Mcp\Abilities\Releases\UpdateRelease;
 use Talaxie\Core\Mcp\Abilities\Site\GetInfo;
+use Talaxie\Core\Mcp\Abilities\Site\GetOption;
+use Talaxie\Core\Mcp\Abilities\Site\UpdateOption;
+use Talaxie\Core\Mcp\Abilities\Users\CreateUser;
+use Talaxie\Core\Mcp\Abilities\Users\GetUser;
+use Talaxie\Core\Mcp\Abilities\Users\ListUsers;
+use Talaxie\Core\Mcp\Abilities\Users\UpdateUser;
 use Talaxie\Core\Mcp\Audit\AuditLogger;
 use Talaxie\Core\Mcp\Audit\AuditPostType;
 use Talaxie\Core\Mcp\Audit\AuditRetention;
@@ -75,6 +86,8 @@ final class Server {
 	public static function abilities(): array {
 		return array(
 			GetInfo::class,
+			GetOption::class,
+			UpdateOption::class,
 			ListPosts::class,
 			GetPost::class,
 			CreatePost::class,
@@ -92,6 +105,15 @@ final class Server {
 			CreateRelease::class,
 			UpdateRelease::class,
 			DeleteRelease::class,
+			ListUsers::class,
+			GetUser::class,
+			CreateUser::class,
+			UpdateUser::class,
+			ListPlugins::class,
+			ActivatePlugin::class,
+			CreateSite::class,
+			DeleteSite::class,
+			RestCall::class,
 			ListAudit::class,
 		);
 	}
