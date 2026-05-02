@@ -11,6 +11,9 @@ namespace Talaxie\Core\Mcp;
 
 use Talaxie\Core\Mcp\Abilities\AbilityInterface;
 use Talaxie\Core\Mcp\Abilities\Audit\ListAudit;
+use Talaxie\Core\Mcp\Abilities\Media\DeleteMedia;
+use Talaxie\Core\Mcp\Abilities\Media\ListMedia;
+use Talaxie\Core\Mcp\Abilities\Media\UploadMedia;
 use Talaxie\Core\Mcp\Abilities\Pages\CreatePage;
 use Talaxie\Core\Mcp\Abilities\Pages\DeletePage;
 use Talaxie\Core\Mcp\Abilities\Pages\GetPage;
@@ -76,6 +79,9 @@ final class Server {
 			CreatePage::class,
 			UpdatePage::class,
 			DeletePage::class,
+			ListMedia::class,
+			UploadMedia::class,
+			DeleteMedia::class,
 			ListAudit::class,
 		);
 	}
