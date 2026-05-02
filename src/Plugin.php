@@ -11,8 +11,11 @@ namespace Talaxie\Core;
 
 defined( 'ABSPATH' ) || exit;
 
+use Talaxie\Core\Mcp\Server as McpServer;
+use Talaxie\Core\Mcp\Sudo\TokenSchema;
 use Talaxie\Core\PostTypes\Contributor;
 use Talaxie\Core\PostTypes\Release;
+use Talaxie\Core\Roles\AiBotRole;
 use Talaxie\Core\Taxonomies\Component;
 
 /**
@@ -30,6 +33,7 @@ final class Plugin {
 		add_action( 'init', array( Release::class, 'register' ) );
 		add_action( 'init', array( Contributor::class, 'register' ) );
 		add_action( 'init', array( Component::class, 'register' ) );
+		McpServer::register();
 		register_activation_hook( TALAXIE_CORE_FILE, array( self::class, 'activate' ) );
 		register_deactivation_hook( TALAXIE_CORE_FILE, array( self::class, 'deactivate' ) );
 	}
@@ -60,6 +64,8 @@ final class Plugin {
 		Release::register();
 		Contributor::register();
 		Component::register();
+		AiBotRole::register();
+		TokenSchema::install();
 		flush_rewrite_rules();
 		update_option( 'talaxie_core_version', TALAXIE_CORE_VERSION );
 	}
