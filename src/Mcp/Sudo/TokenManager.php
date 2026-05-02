@@ -187,6 +187,71 @@ final class TokenManager {
 	}
 
 	/**
+	 * List currently active (not revoked, not expired) tokens.
+	 *
+	 * Useful for the wp-admin page and the WP-CLI listing — never returns
+	 * the token cleartext (it does not exist anymore at this point).
+	 *
+	 * @return list<array{id:int, scope:array<int,string>, single_use:bool, usage_count:int, created_at:string, expires_at:string, created_by_user_id:int}>
+	 */
+	public static function list_active(): array {
+		global $wpdb;
+		$table = TokenSchema::table_name();
+		$now   = gmdate( 'Y-m-d H:i:s' );
+
+		$rows = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+			$wpdb->prepare(
+				"SELECT id, scope, single_use, usage_count, created_at, expires_at, created_by_user_id
+				 FROM {$table}
+				 WHERE revoked_at IS NULL
+				   AND expires_at > %s
+				 ORDER BY expires_at ASC",
+				$now
+			)
+		);
+
+		$out = array();
+		foreach ( (array) $rows as $row ) {
+			$decoded = json_decode( (string) $row->scope, true );
+			$out[]   = array(
+				'id'                 => (int) $row->id,
+				'scope'              => is_array( $decoded ) ? array_values( array_map( 'strval', $decoded ) ) : array(),
+				'single_use'         => 1 === (int) $row->single_use,
+				'usage_count'        => (int) $row->usage_count,
+				'created_at'         => (string) $row->created_at,
+				'expires_at'         => (string) $row->expires_at,
+				'created_by_user_id' => (int) $row->created_by_user_id,
+			);
+		}
+		return $out;
+	}
+
+	/**
+	 * Revoke a single token by ID.
+	 *
+	 * @param int $id Row id.
+	 *
+	 * @return bool True if a row was revoked.
+	 */
+	public static function revoke( int $id ): bool {
+		if ( $id <= 0 ) {
+			return false;
+		}
+		global $wpdb;
+		$updated = $wpdb->update( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+			TokenSchema::table_name(),
+			array( 'revoked_at' => gmdate( 'Y-m-d H:i:s' ) ),
+			array(
+				'id'         => $id,
+				'revoked_at' => null,
+			),
+			array( '%s' ),
+			array( '%d', '%s' )
+		);
+		return is_int( $updated ) && $updated > 0;
+	}
+
+	/**
 	 * Hard-delete tokens that expired more than a day ago.
 	 *
 	 * Wired to a daily cron in Phase 2.

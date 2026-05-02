@@ -13,6 +13,9 @@ defined( 'ABSPATH' ) || exit;
 
 use Talaxie\Core\Mcp\Audit\AuditRetention;
 use Talaxie\Core\Mcp\Server as McpServer;
+use Talaxie\Core\Mcp\Sudo\AdminPage as SudoAdminPage;
+use Talaxie\Core\Mcp\Sudo\CliCommand as SudoCliCommand;
+use Talaxie\Core\Mcp\Sudo\RestController as SudoRestController;
 use Talaxie\Core\Mcp\Sudo\TokenSchema;
 use Talaxie\Core\PostTypes\Contributor;
 use Talaxie\Core\PostTypes\Release;
@@ -36,6 +39,9 @@ final class Plugin {
 		add_action( 'init', array( Contributor::class, 'register' ) );
 		add_action( 'init', array( Component::class, 'register' ) );
 		McpServer::register();
+		SudoAdminPage::register();
+		SudoRestController::register();
+		SudoCliCommand::register();
 		register_activation_hook( TALAXIE_CORE_FILE, array( self::class, 'activate' ) );
 		register_deactivation_hook( TALAXIE_CORE_FILE, array( self::class, 'deactivate' ) );
 	}
