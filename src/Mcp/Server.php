@@ -10,11 +10,15 @@ declare(strict_types=1);
 namespace Talaxie\Core\Mcp;
 
 use Talaxie\Core\Mcp\Abilities\AbilityInterface;
+use Talaxie\Core\Mcp\Abilities\Audit\ListAudit;
 use Talaxie\Core\Mcp\Abilities\Posts\CreatePost;
 use Talaxie\Core\Mcp\Abilities\Posts\GetPost;
 use Talaxie\Core\Mcp\Abilities\Posts\ListPosts;
 use Talaxie\Core\Mcp\Abilities\Posts\UpdatePost;
 use Talaxie\Core\Mcp\Abilities\Site\GetInfo;
+use Talaxie\Core\Mcp\Audit\AuditLogger;
+use Talaxie\Core\Mcp\Audit\AuditPostType;
+use Talaxie\Core\Mcp\Audit\AuditRetention;
 use WP\MCP\Core\McpAdapter;
 use WP\MCP\Infrastructure\ErrorHandling\ErrorLogMcpErrorHandler;
 use WP\MCP\Transport\HttpTransport;
@@ -42,6 +46,9 @@ final class Server {
 	 * @return void
 	 */
 	public static function register(): void {
+		add_action( 'init', array( AuditPostType::class, 'register' ) );
+		AuditLogger::register();
+		AuditRetention::register();
 		add_action( 'wp_abilities_api_categories_init', array( self::class, 'register_category' ) );
 		add_action( 'wp_abilities_api_init', array( self::class, 'register_abilities' ) );
 		add_action( 'mcp_adapter_init', array( self::class, 'register_servers' ) );
@@ -59,6 +66,7 @@ final class Server {
 			GetPost::class,
 			CreatePost::class,
 			UpdatePost::class,
+			ListAudit::class,
 		);
 	}
 

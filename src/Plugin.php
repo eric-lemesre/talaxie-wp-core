@@ -11,6 +11,7 @@ namespace Talaxie\Core;
 
 defined( 'ABSPATH' ) || exit;
 
+use Talaxie\Core\Mcp\Audit\AuditRetention;
 use Talaxie\Core\Mcp\Server as McpServer;
 use Talaxie\Core\Mcp\Sudo\TokenSchema;
 use Talaxie\Core\PostTypes\Contributor;
@@ -66,6 +67,7 @@ final class Plugin {
 		Component::register();
 		AiBotRole::register();
 		TokenSchema::install();
+		AuditRetention::activate();
 		flush_rewrite_rules();
 		update_option( 'talaxie_core_version', TALAXIE_CORE_VERSION );
 	}
@@ -76,6 +78,7 @@ final class Plugin {
 	 * @return void
 	 */
 	public static function deactivate(): void {
+		AuditRetention::deactivate();
 		flush_rewrite_rules();
 	}
 }
