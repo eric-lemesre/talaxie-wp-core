@@ -36,9 +36,11 @@ tests_add_filter(
 tests_add_filter(
 	'plugins_loaded',
 	static function (): void {
-		// Ensure the role and the sudo tokens table exist for every test run,
-		// even when the activation hook did not fire (test bootstrap path).
+		// Ensure the role, custom caps and sudo tokens table exist for every
+		// test run, even when the activation hook did not fire.
+		\Talaxie\Core\Roles\AiBotRole::unregister();
 		\Talaxie\Core\Roles\AiBotRole::register();
+		\Talaxie\Core\Roles\Capabilities::grant_release_caps();
 		\Talaxie\Core\Mcp\Sudo\TokenSchema::install();
 	},
 	20

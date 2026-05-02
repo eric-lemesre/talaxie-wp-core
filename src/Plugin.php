@@ -17,6 +17,7 @@ use Talaxie\Core\Mcp\Sudo\TokenSchema;
 use Talaxie\Core\PostTypes\Contributor;
 use Talaxie\Core\PostTypes\Release;
 use Talaxie\Core\Roles\AiBotRole;
+use Talaxie\Core\Roles\Capabilities;
 use Talaxie\Core\Taxonomies\Component;
 
 /**
@@ -66,6 +67,7 @@ final class Plugin {
 		Contributor::register();
 		Component::register();
 		AiBotRole::register();
+		Capabilities::grant_release_caps();
 		TokenSchema::install();
 		AuditRetention::activate();
 		flush_rewrite_rules();

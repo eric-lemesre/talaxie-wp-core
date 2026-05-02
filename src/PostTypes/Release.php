@@ -55,7 +55,8 @@ final class Release {
 			'rest_base'          => 'releases',
 			'menu_position'      => 21,
 			'menu_icon'          => 'dashicons-download',
-			'capability_type'    => 'post',
+			'capability_type'    => array( 'talaxie_release', 'talaxie_releases' ),
+			'map_meta_cap'       => true,
 			'has_archive'        => 'releases',
 			'hierarchical'       => false,
 			'rewrite'            => array(

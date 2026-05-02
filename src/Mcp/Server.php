@@ -23,6 +23,11 @@ use Talaxie\Core\Mcp\Abilities\Posts\CreatePost;
 use Talaxie\Core\Mcp\Abilities\Posts\GetPost;
 use Talaxie\Core\Mcp\Abilities\Posts\ListPosts;
 use Talaxie\Core\Mcp\Abilities\Posts\UpdatePost;
+use Talaxie\Core\Mcp\Abilities\Releases\CreateRelease;
+use Talaxie\Core\Mcp\Abilities\Releases\DeleteRelease;
+use Talaxie\Core\Mcp\Abilities\Releases\GetRelease;
+use Talaxie\Core\Mcp\Abilities\Releases\ListReleases;
+use Talaxie\Core\Mcp\Abilities\Releases\UpdateRelease;
 use Talaxie\Core\Mcp\Abilities\Site\GetInfo;
 use Talaxie\Core\Mcp\Audit\AuditLogger;
 use Talaxie\Core\Mcp\Audit\AuditPostType;
@@ -82,6 +87,11 @@ final class Server {
 			ListMedia::class,
 			UploadMedia::class,
 			DeleteMedia::class,
+			ListReleases::class,
+			GetRelease::class,
+			CreateRelease::class,
+			UpdateRelease::class,
+			DeleteRelease::class,
 			ListAudit::class,
 		);
 	}

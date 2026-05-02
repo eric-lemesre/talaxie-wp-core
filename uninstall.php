@@ -20,4 +20,5 @@ delete_site_transient( 'talaxie_core_github_releases' );
 delete_site_transient( 'talaxie_core_discord_stats' );
 
 \Talaxie\Core\Roles\AiBotRole::unregister();
+\Talaxie\Core\Roles\Capabilities::revoke_release_caps();
 \Talaxie\Core\Mcp\Sudo\TokenSchema::drop();
