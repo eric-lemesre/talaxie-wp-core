@@ -39,6 +39,11 @@ final class CapabilityGate {
 	 * @return bool|\WP_Error true on success, WP_Error on permission denial.
 	 */
 	public static function check( string $ability_name, string $required_cap, array $input ) {
+		if ( DevMode::is_active() ) {
+			self::audit( $ability_name, $required_cap, false, true, true );
+			return true;
+		}
+
 		if ( self::has_native_capability( $required_cap ) ) {
 			self::audit( $ability_name, $required_cap, false, true );
 			return true;
@@ -94,16 +99,17 @@ final class CapabilityGate {
 		return current_user_can( $cap );
 	}
 
-	private static function audit( string $ability_name, string $required_cap, bool $sudo_used, bool $allowed ): void {
+	private static function audit( string $ability_name, string $required_cap, bool $sudo_used, bool $allowed, bool $dev_mode_bypass = false ): void {
 		do_action(
 			'talaxie_mcp_audit',
 			array(
-				'ability'   => $ability_name,
-				'capability'=> $required_cap,
-				'user_id'   => get_current_user_id(),
-				'sudo_used' => $sudo_used,
-				'allowed'   => $allowed,
-				'timestamp' => time(),
+				'ability'         => $ability_name,
+				'capability'      => $required_cap,
+				'user_id'         => get_current_user_id(),
+				'sudo_used'       => $sudo_used,
+				'allowed'         => $allowed,
+				'dev_mode_bypass' => $dev_mode_bypass,
+				'timestamp'       => time(),
 			)
 		);
 	}
