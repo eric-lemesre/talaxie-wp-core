@@ -39,14 +39,14 @@ final class ListAudit implements AbilityInterface {
 				'description'         => __( 'Return the most recent MCP audit entries (allow/deny, capability, sudo usage). Requires manage_options.', 'talaxie-core' ),
 				'category'            => 'talaxie-core',
 				'input_schema'        => array(
-					'type'       => 'object',
-					'properties' => array(
-						'page'     => array(
+					'type'                 => 'object',
+					'properties'           => array(
+						'page'         => array(
 							'type'    => 'integer',
 							'minimum' => 1,
 							'default' => 1,
 						),
-						'per_page' => array(
+						'per_page'     => array(
 							'type'    => 'integer',
 							'minimum' => 1,
 							'maximum' => 200,
@@ -54,7 +54,7 @@ final class ListAudit implements AbilityInterface {
 						),
 						'allowed_only' => array( 'type' => 'boolean' ),
 						'denied_only'  => array( 'type' => 'boolean' ),
-						'_sudo'    => array( 'type' => 'string' ),
+						'_sudo'        => array( 'type' => 'string' ),
 					),
 					'additionalProperties' => false,
 				),
@@ -120,7 +120,7 @@ final class ListAudit implements AbilityInterface {
 					);
 				},
 				'meta'                => array(
-					'annotations' => array(
+					'annotations'  => array(
 						'readonly'    => true,
 						'destructive' => false,
 						'idempotent'  => true,

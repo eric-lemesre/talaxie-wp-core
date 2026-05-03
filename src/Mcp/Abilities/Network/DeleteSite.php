@@ -38,9 +38,12 @@ final class DeleteSite implements AbilityInterface {
 				'description'         => __( 'Delete a site from the network, including its files. Multisite + super_admin only, prod-blocked.', 'talaxie-core' ),
 				'category'            => 'talaxie-core',
 				'input_schema'        => array(
-					'type'       => 'object',
-					'properties' => array(
-						'site_id' => array( 'type' => 'integer', 'minimum' => 1 ),
+					'type'                 => 'object',
+					'properties'           => array(
+						'site_id' => array(
+							'type'    => 'integer',
+							'minimum' => 1,
+						),
 						'drop'    => array(
 							'type'        => 'boolean',
 							'description' => __( 'Also drop the site database tables.', 'talaxie-core' ),
@@ -81,7 +84,11 @@ final class DeleteSite implements AbilityInterface {
 					);
 				},
 				'meta'                => array(
-					'annotations' => array( 'readonly' => false, 'destructive' => true, 'idempotent' => false ),
+					'annotations'  => array(
+						'readonly'    => false,
+						'destructive' => true,
+						'idempotent'  => false,
+					),
 					'show_in_rest' => true,
 				),
 			)

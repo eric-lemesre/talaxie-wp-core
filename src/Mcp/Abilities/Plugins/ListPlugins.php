@@ -71,7 +71,11 @@ final class ListPlugins implements AbilityInterface {
 					return array( 'items' => $items );
 				},
 				'meta'                => array(
-					'annotations' => array( 'readonly' => true, 'destructive' => false, 'idempotent' => true ),
+					'annotations'  => array(
+						'readonly'    => true,
+						'destructive' => false,
+						'idempotent'  => true,
+					),
 					'show_in_rest' => true,
 				),
 			)

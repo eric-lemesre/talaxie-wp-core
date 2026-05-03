@@ -37,9 +37,12 @@ final class GetUser implements AbilityInterface {
 				'description'         => __( 'Return one WordPress user (id, login, email, roles).', 'talaxie-core' ),
 				'category'            => 'talaxie-core',
 				'input_schema'        => array(
-					'type'       => 'object',
-					'properties' => array(
-						'id'    => array( 'type' => 'integer', 'minimum' => 1 ),
+					'type'                 => 'object',
+					'properties'           => array(
+						'id'    => array(
+							'type'    => 'integer',
+							'minimum' => 1,
+						),
 						'_sudo' => array( 'type' => 'string' ),
 					),
 					'required'             => array( 'id' ),
@@ -70,7 +73,11 @@ final class GetUser implements AbilityInterface {
 					);
 				},
 				'meta'                => array(
-					'annotations' => array( 'readonly' => true, 'destructive' => false, 'idempotent' => true ),
+					'annotations'  => array(
+						'readonly'    => true,
+						'destructive' => false,
+						'idempotent'  => true,
+					),
 					'show_in_rest' => true,
 				),
 			)

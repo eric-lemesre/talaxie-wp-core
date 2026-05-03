@@ -60,9 +60,9 @@ defined( 'ABSPATH' ) || exit;
  */
 final class Server {
 
-	public const CATEGORY      = 'talaxie-core';
-	public const SERVER_PROD   = 'talaxie-mcp-prod-server';
-	public const SERVER_TEST   = 'talaxie-mcp-test-server';
+	public const CATEGORY    = 'talaxie-core';
+	public const SERVER_PROD = 'talaxie-mcp-prod-server';
+	public const SERVER_TEST = 'talaxie-mcp-test-server';
 
 	/**
 	 * Hook the bootstrap into WordPress.
@@ -174,7 +174,7 @@ final class Server {
 			array( HttpTransport::class ),
 			ErrorLogMcpErrorHandler::class,
 			null,
-			array_map( static fn( string $class ): string => $class::name(), $prod_tools ),
+			array_map( static fn( string $ability_class ): string => $ability_class::name(), $prod_tools ),
 			array(),
 			array()
 		);
@@ -191,7 +191,7 @@ final class Server {
 				array( HttpTransport::class ),
 				ErrorLogMcpErrorHandler::class,
 				null,
-				array_map( static fn( string $class ): string => $class::name(), $test_tools ),
+				array_map( static fn( string $ability_class ): string => $ability_class::name(), $test_tools ),
 				array(),
 				array()
 			);
@@ -201,15 +201,15 @@ final class Server {
 	/**
 	 * Keep only abilities flagged as production-safe.
 	 *
-	 * @param list<class-string<AbilityInterface>> $abilities Ability classes.
+	 * @param array $abilities Ability class names (each implementing AbilityInterface).
 	 *
-	 * @return list<class-string<AbilityInterface>>
+	 * @return array
 	 */
 	private static function filter_for_production( array $abilities ): array {
 		return array_values(
 			array_filter(
 				$abilities,
-				static fn( string $class ): bool => $class::is_allowed_on_production()
+				static fn( string $ability_class ): bool => $ability_class::is_allowed_on_production()
 			)
 		);
 	}

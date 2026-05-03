@@ -15,6 +15,9 @@ use Talaxie\Core\PostTypes\Release;
 
 defined( 'ABSPATH' ) || exit;
 
+/**
+ * Return one talaxie_release entry by id. Capability: edit_talaxie_releases.
+ */
 final class GetRelease implements AbilityInterface {
 
 	public const ABILITY = 'talaxie-core/releases-get';
@@ -35,9 +38,12 @@ final class GetRelease implements AbilityInterface {
 				'description'         => __( 'Return a single Talaxie release entry.', 'talaxie-core' ),
 				'category'            => 'talaxie-core',
 				'input_schema'        => array(
-					'type'       => 'object',
-					'properties' => array(
-						'id'    => array( 'type' => 'integer', 'minimum' => 1 ),
+					'type'                 => 'object',
+					'properties'           => array(
+						'id'    => array(
+							'type'    => 'integer',
+							'minimum' => 1,
+						),
 						'_sudo' => array( 'type' => 'string' ),
 					),
 					'required'             => array( 'id' ),
@@ -75,7 +81,11 @@ final class GetRelease implements AbilityInterface {
 					);
 				},
 				'meta'                => array(
-					'annotations' => array( 'readonly' => true, 'destructive' => false, 'idempotent' => true ),
+					'annotations'  => array(
+						'readonly'    => true,
+						'destructive' => false,
+						'idempotent'  => true,
+					),
 					'show_in_rest' => true,
 				),
 			)

@@ -41,10 +41,16 @@ final class DeletePage implements AbilityInterface {
 				'description'         => __( 'Move a page to trash, or permanently delete it. Requires delete_pages (sudo token).', 'talaxie-core' ),
 				'category'            => 'talaxie-core',
 				'input_schema'        => array(
-					'type'       => 'object',
-					'properties' => array(
-						'id'    => array( 'type' => 'integer', 'minimum' => 1 ),
-						'force' => array( 'type' => 'boolean', 'default' => false ),
+					'type'                 => 'object',
+					'properties'           => array(
+						'id'    => array(
+							'type'    => 'integer',
+							'minimum' => 1,
+						),
+						'force' => array(
+							'type'    => 'boolean',
+							'default' => false,
+						),
 						'_sudo' => array( 'type' => 'string' ),
 					),
 					'required'             => array( 'id' ),
@@ -78,7 +84,11 @@ final class DeletePage implements AbilityInterface {
 					);
 				},
 				'meta'                => array(
-					'annotations' => array( 'readonly' => false, 'destructive' => true, 'idempotent' => false ),
+					'annotations'  => array(
+						'readonly'    => false,
+						'destructive' => true,
+						'idempotent'  => false,
+					),
 					'show_in_rest' => true,
 				),
 			)

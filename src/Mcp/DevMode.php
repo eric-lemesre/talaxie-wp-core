@@ -51,7 +51,7 @@ final class DevMode {
 		 *
 		 * @param bool $active Whether dev-mode is active.
 		 */
-		return (bool) apply_filters( self::FILTER, $active );
+		return (bool) apply_filters( self::FILTER, $active ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.DynamicHooknameFound -- self::FILTER expands to talaxie_mcp_dev_mode_active.
 	}
 
 	/**

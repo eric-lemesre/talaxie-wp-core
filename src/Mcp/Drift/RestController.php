@@ -93,7 +93,7 @@ final class RestController {
 					'tools' => array_values( array_unique( $tool_names ) ),
 				);
 
-				if ( $server_id === Server::SERVER_PROD ) {
+				if ( Server::SERVER_PROD === $server_id ) {
 					$leaks = array_values( array_diff( $tool_names, $prod_safe_names ) );
 					if ( ! empty( $leaks ) ) {
 						$report['drift'][] = array(

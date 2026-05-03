@@ -28,10 +28,10 @@ final class TokenManager {
 	/**
 	 * Issue a new sudo token.
 	 *
-	 * @param string[]  $scope          Capabilities the token elevates to.
-	 * @param int       $ttl_seconds    Lifetime in seconds (clamped to the configured max).
-	 * @param bool      $single_use     If true, the token is invalidated after one validation.
-	 * @param int|null  $created_by     User ID creating the token (defaults to the current user).
+	 * @param string[] $scope          Capabilities the token elevates to.
+	 * @param int      $ttl_seconds    Lifetime in seconds (clamped to the configured max).
+	 * @param bool     $single_use     If true, the token is invalidated after one validation.
+	 * @param int|null $created_by     User ID creating the token (defaults to the current user).
 	 *
 	 * @return array{token:string, expires_at:string, id:int}|\WP_Error
 	 */
@@ -112,15 +112,14 @@ final class TokenManager {
 		$table = TokenSchema::table_name();
 		$now   = gmdate( 'Y-m-d H:i:s' );
 
-		$rows = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+		// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+		$rows = $wpdb->get_results(
 			$wpdb->prepare(
-				"SELECT id, token_hash, scope, single_use, usage_count
-				 FROM {$table}
-				 WHERE revoked_at IS NULL
-				   AND expires_at > %s",
+				"SELECT id, token_hash, scope, single_use, usage_count FROM {$table} WHERE revoked_at IS NULL AND expires_at > %s",
 				$now
 			)
 		);
+		// phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 
 		if ( empty( $rows ) ) {
 			return false;
@@ -136,7 +135,7 @@ final class TokenManager {
 				return false;
 			}
 
-			$single_use = (int) $row->single_use === 1;
+			$single_use = 1 === (int) $row->single_use;
 			$used       = (int) $row->usage_count;
 			if ( $single_use && $used > 0 ) {
 				return false;
@@ -175,13 +174,15 @@ final class TokenManager {
 		$table = TokenSchema::table_name();
 		$now   = gmdate( 'Y-m-d H:i:s' );
 
-		$count = $wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.NotPrepared
+		// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+		$count = $wpdb->query(
 			$wpdb->prepare(
 				"UPDATE {$table} SET revoked_at = %s WHERE revoked_at IS NULL AND expires_at > %s",
 				$now,
 				$now
 			)
 		);
+		// phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 
 		return (int) $count;
 	}
@@ -199,16 +200,14 @@ final class TokenManager {
 		$table = TokenSchema::table_name();
 		$now   = gmdate( 'Y-m-d H:i:s' );
 
-		$rows = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+		// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+		$rows = $wpdb->get_results(
 			$wpdb->prepare(
-				"SELECT id, scope, single_use, usage_count, created_at, expires_at, created_by_user_id
-				 FROM {$table}
-				 WHERE revoked_at IS NULL
-				   AND expires_at > %s
-				 ORDER BY expires_at ASC",
+				"SELECT id, scope, single_use, usage_count, created_at, expires_at, created_by_user_id FROM {$table} WHERE revoked_at IS NULL AND expires_at > %s ORDER BY expires_at ASC",
 				$now
 			)
 		);
+		// phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 
 		$out = array();
 		foreach ( (array) $rows as $row ) {
@@ -263,12 +262,14 @@ final class TokenManager {
 		$table  = TokenSchema::table_name();
 		$cutoff = gmdate( 'Y-m-d H:i:s', time() - DAY_IN_SECONDS );
 
-		$count = $wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.NotPrepared
+		// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+		$count = $wpdb->query(
 			$wpdb->prepare(
 				"DELETE FROM {$table} WHERE expires_at < %s",
 				$cutoff
 			)
 		);
+		// phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 
 		return (int) $count;
 	}

@@ -38,8 +38,8 @@ final class ActivatePlugin implements AbilityInterface {
 				'description'         => __( 'Activate an installed plugin by its file path. Sudo only, prod-blocked.', 'talaxie-core' ),
 				'category'            => 'talaxie-core',
 				'input_schema'        => array(
-					'type'       => 'object',
-					'properties' => array(
+					'type'                 => 'object',
+					'properties'           => array(
 						'file'  => array( 'type' => 'string' ),
 						'_sudo' => array( 'type' => 'string' ),
 					),
@@ -74,7 +74,11 @@ final class ActivatePlugin implements AbilityInterface {
 					);
 				},
 				'meta'                => array(
-					'annotations' => array( 'readonly' => false, 'destructive' => false, 'idempotent' => true ),
+					'annotations'  => array(
+						'readonly'    => false,
+						'destructive' => false,
+						'idempotent'  => true,
+					),
 					'show_in_rest' => true,
 				),
 			)

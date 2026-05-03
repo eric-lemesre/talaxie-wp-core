@@ -37,15 +37,24 @@ final class UpdatePage implements AbilityInterface {
 				'description'         => __( 'Update an existing page (title, content, status, slug, parent, menu_order).', 'talaxie-core' ),
 				'category'            => 'talaxie-core',
 				'input_schema'        => array(
-					'type'       => 'object',
-					'properties' => array(
-						'id'         => array( 'type' => 'integer', 'minimum' => 1 ),
+					'type'                 => 'object',
+					'properties'           => array(
+						'id'         => array(
+							'type'    => 'integer',
+							'minimum' => 1,
+						),
 						'title'      => array( 'type' => 'string' ),
 						'content'    => array( 'type' => 'string' ),
 						'excerpt'    => array( 'type' => 'string' ),
-						'status'     => array( 'type' => 'string', 'enum' => array( 'draft', 'pending', 'publish', 'private' ) ),
+						'status'     => array(
+							'type' => 'string',
+							'enum' => array( 'draft', 'pending', 'publish', 'private' ),
+						),
 						'slug'       => array( 'type' => 'string' ),
-						'parent'     => array( 'type' => 'integer', 'minimum' => 0 ),
+						'parent'     => array(
+							'type'    => 'integer',
+							'minimum' => 0,
+						),
 						'menu_order' => array( 'type' => 'integer' ),
 						'_sudo'      => array( 'type' => 'string' ),
 					),
@@ -112,7 +121,11 @@ final class UpdatePage implements AbilityInterface {
 					);
 				},
 				'meta'                => array(
-					'annotations' => array( 'readonly' => false, 'destructive' => false, 'idempotent' => true ),
+					'annotations'  => array(
+						'readonly'    => false,
+						'destructive' => false,
+						'idempotent'  => true,
+					),
 					'show_in_rest' => true,
 				),
 			)

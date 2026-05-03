@@ -37,16 +37,23 @@ final class CreatePage implements AbilityInterface {
 				'description'         => __( 'Create a new page (defaults to draft). Requires edit_pages.', 'talaxie-core' ),
 				'category'            => 'talaxie-core',
 				'input_schema'        => array(
-					'type'       => 'object',
-					'properties' => array(
-						'title'     => array( 'type' => 'string' ),
-						'content'   => array( 'type' => 'string' ),
-						'excerpt'   => array( 'type' => 'string' ),
-						'status'    => array( 'type' => 'string', 'enum' => array( 'draft', 'pending' ), 'default' => 'draft' ),
-						'slug'      => array( 'type' => 'string' ),
-						'parent'    => array( 'type' => 'integer', 'minimum' => 0 ),
-						'menu_order'=> array( 'type' => 'integer' ),
-						'_sudo'     => array( 'type' => 'string' ),
+					'type'                 => 'object',
+					'properties'           => array(
+						'title'      => array( 'type' => 'string' ),
+						'content'    => array( 'type' => 'string' ),
+						'excerpt'    => array( 'type' => 'string' ),
+						'status'     => array(
+							'type'    => 'string',
+							'enum'    => array( 'draft', 'pending' ),
+							'default' => 'draft',
+						),
+						'slug'       => array( 'type' => 'string' ),
+						'parent'     => array(
+							'type'    => 'integer',
+							'minimum' => 0,
+						),
+						'menu_order' => array( 'type' => 'integer' ),
+						'_sudo'      => array( 'type' => 'string' ),
 					),
 					'required'             => array( 'title' ),
 					'additionalProperties' => false,
@@ -96,7 +103,11 @@ final class CreatePage implements AbilityInterface {
 					);
 				},
 				'meta'                => array(
-					'annotations' => array( 'readonly' => false, 'destructive' => false, 'idempotent' => false ),
+					'annotations'  => array(
+						'readonly'    => false,
+						'destructive' => false,
+						'idempotent'  => false,
+					),
 					'show_in_rest' => true,
 				),
 			)

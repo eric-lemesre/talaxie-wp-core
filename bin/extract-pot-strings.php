@@ -20,8 +20,8 @@ if ( '' === $pot ) {
 	exit( 1 );
 }
 
-$lines  = preg_split( '/\R/', $pot );
-$blocks = array();
+$lines   = preg_split( '/\R/', $pot );
+$blocks  = array();
 $current = array();
 foreach ( $lines as $line ) {
 	if ( '' === trim( $line ) ) {

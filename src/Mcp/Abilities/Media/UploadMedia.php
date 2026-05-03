@@ -22,7 +22,7 @@ defined( 'ABSPATH' ) || exit;
  */
 final class UploadMedia implements AbilityInterface {
 
-	public const ABILITY = 'talaxie-core/media-upload';
+	public const ABILITY            = 'talaxie-core/media-upload';
 	private const MAX_DECODED_BYTES = 16 * 1024 * 1024;
 
 	public static function name(): string {
@@ -41,8 +41,8 @@ final class UploadMedia implements AbilityInterface {
 				'description'         => __( 'Create an attachment from a base64-encoded payload. Capability: upload_files.', 'talaxie-core' ),
 				'category'            => 'talaxie-core',
 				'input_schema'        => array(
-					'type'       => 'object',
-					'properties' => array(
+					'type'                 => 'object',
+					'properties'           => array(
 						'filename'    => array( 'type' => 'string' ),
 						'data_base64' => array( 'type' => 'string' ),
 						'title'       => array( 'type' => 'string' ),
@@ -66,7 +66,7 @@ final class UploadMedia implements AbilityInterface {
 						return new \WP_Error( 'talaxie_media_invalid_filename', __( 'A filename is required.', 'talaxie-core' ), array( 'status' => 400 ) );
 					}
 
-					$decoded = base64_decode( (string) ( $input['data_base64'] ?? '' ), true );
+					$decoded = base64_decode( (string) ( $input['data_base64'] ?? '' ), true ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_decode -- MCP transports are JSON, binary uploads must be base64-encoded.
 					if ( false === $decoded ) {
 						return new \WP_Error( 'talaxie_media_invalid_payload', __( 'data_base64 is not valid base64.', 'talaxie-core' ), array( 'status' => 400 ) );
 					}
@@ -122,7 +122,11 @@ final class UploadMedia implements AbilityInterface {
 					);
 				},
 				'meta'                => array(
-					'annotations' => array( 'readonly' => false, 'destructive' => false, 'idempotent' => false ),
+					'annotations'  => array(
+						'readonly'    => false,
+						'destructive' => false,
+						'idempotent'  => false,
+					),
 					'show_in_rest' => true,
 				),
 			)

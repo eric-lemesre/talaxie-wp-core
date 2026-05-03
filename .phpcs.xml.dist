@@ -9,6 +9,8 @@
     <exclude-pattern>*/build/*</exclude-pattern>
     <exclude-pattern>*/languages/*</exclude-pattern>
     <exclude-pattern>*/tests/*</exclude-pattern>
+    <!-- Standalone helper scripts; not part of the plugin runtime. -->
+    <exclude-pattern>*/bin/*</exclude-pattern>
 
     <arg name="extensions" value="php"/>
     <arg name="colors"/>
@@ -25,6 +27,13 @@
     <rule ref="WordPress-Docs"/>
     <rule ref="PHPCompatibilityWP"/>
 
+    <!-- Ability classes implement AbilityInterface — the contract is documented
+         on the interface, repeating it on every concrete class would only add
+         noise and drift. -->
+    <rule ref="Squiz.Commenting.FunctionComment.Missing">
+        <exclude-pattern>*/src/Mcp/Abilities/*</exclude-pattern>
+    </rule>
+
     <rule ref="WordPress.WP.I18n">
         <properties>
             <property name="text_domain" type="array">
@@ -37,7 +46,9 @@
         <properties>
             <property name="prefixes" type="array">
                 <element value="talaxie_core"/>
+                <element value="talaxie_mcp"/>
                 <element value="TALAXIE_CORE"/>
+                <element value="TALAXIE_MCP"/>
                 <element value="Talaxie\Core"/>
             </property>
         </properties>

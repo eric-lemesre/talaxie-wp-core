@@ -39,8 +39,8 @@ final class ListPosts implements AbilityInterface {
 				'description'         => __( 'List posts visible to the caller. Supports pagination, status, and search.', 'talaxie-core' ),
 				'category'            => 'talaxie-core',
 				'input_schema'        => array(
-					'type'       => 'object',
-					'properties' => array(
+					'type'                 => 'object',
+					'properties'           => array(
 						'page'     => array(
 							'type'    => 'integer',
 							'minimum' => 1,
@@ -78,12 +78,12 @@ final class ListPosts implements AbilityInterface {
 
 					$query = new \WP_Query(
 						array(
-							'post_type'      => 'post',
-							'post_status'    => 'any' === $status ? array( 'publish', 'draft', 'pending', 'private', 'future' ) : $status,
-							'posts_per_page' => $per_page,
-							'paged'          => $page,
-							's'              => $search,
-							'no_found_rows'  => false,
+							'post_type'              => 'post',
+							'post_status'            => 'any' === $status ? array( 'publish', 'draft', 'pending', 'private', 'future' ) : $status,
+							'posts_per_page'         => $per_page,
+							'paged'                  => $page,
+							's'                      => $search,
+							'no_found_rows'          => false,
 							'update_post_meta_cache' => false,
 							'update_post_term_cache' => false,
 						)
@@ -111,7 +111,7 @@ final class ListPosts implements AbilityInterface {
 					);
 				},
 				'meta'                => array(
-					'annotations' => array(
+					'annotations'  => array(
 						'readonly'    => true,
 						'destructive' => false,
 						'idempotent'  => true,

@@ -73,7 +73,7 @@ final class GetInfo implements AbilityInterface {
 					);
 				},
 				'meta'                => array(
-					'annotations' => array(
+					'annotations'  => array(
 						'readonly'    => true,
 						'destructive' => false,
 						'idempotent'  => true,

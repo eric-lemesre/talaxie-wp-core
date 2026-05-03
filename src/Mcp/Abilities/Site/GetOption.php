@@ -61,8 +61,8 @@ final class GetOption implements AbilityInterface {
 				'description'         => __( 'Return the value of a WordPress option (allowlist enforced).', 'talaxie-core' ),
 				'category'            => 'talaxie-core',
 				'input_schema'        => array(
-					'type'       => 'object',
-					'properties' => array(
+					'type'                 => 'object',
+					'properties'           => array(
 						'name'  => array( 'type' => 'string' ),
 						'_sudo' => array( 'type' => 'string' ),
 					),
@@ -91,7 +91,11 @@ final class GetOption implements AbilityInterface {
 					);
 				},
 				'meta'                => array(
-					'annotations' => array( 'readonly' => true, 'destructive' => false, 'idempotent' => true ),
+					'annotations'  => array(
+						'readonly'    => true,
+						'destructive' => false,
+						'idempotent'  => true,
+					),
 					'show_in_rest' => true,
 				),
 			)

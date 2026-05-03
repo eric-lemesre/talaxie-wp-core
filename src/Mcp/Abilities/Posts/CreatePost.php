@@ -40,8 +40,8 @@ final class CreatePost implements AbilityInterface {
 				'description'         => __( 'Create a new post (defaults to draft). Requires edit_posts.', 'talaxie-core' ),
 				'category'            => 'talaxie-core',
 				'input_schema'        => array(
-					'type'       => 'object',
-					'properties' => array(
+					'type'                 => 'object',
+					'properties'           => array(
 						'title'   => array( 'type' => 'string' ),
 						'content' => array( 'type' => 'string' ),
 						'excerpt' => array( 'type' => 'string' ),
@@ -97,7 +97,7 @@ final class CreatePost implements AbilityInterface {
 					);
 				},
 				'meta'                => array(
-					'annotations' => array(
+					'annotations'  => array(
 						'readonly'    => false,
 						'destructive' => false,
 						'idempotent'  => false,

@@ -37,11 +37,17 @@ final class CreateUser implements AbilityInterface {
 				'description'         => __( 'Create a WordPress user. Requires create_users via sudo. Disabled on production.', 'talaxie-core' ),
 				'category'            => 'talaxie-core',
 				'input_schema'        => array(
-					'type'       => 'object',
-					'properties' => array(
+					'type'                 => 'object',
+					'properties'           => array(
 						'login'    => array( 'type' => 'string' ),
-						'email'    => array( 'type' => 'string', 'format' => 'email' ),
-						'role'     => array( 'type' => 'string', 'default' => 'subscriber' ),
+						'email'    => array(
+							'type'   => 'string',
+							'format' => 'email',
+						),
+						'role'     => array(
+							'type'    => 'string',
+							'default' => 'subscriber',
+						),
 						'password' => array( 'type' => 'string' ),
 						'_sudo'    => array( 'type' => 'string' ),
 					),
@@ -89,7 +95,11 @@ final class CreateUser implements AbilityInterface {
 					);
 				},
 				'meta'                => array(
-					'annotations' => array( 'readonly' => false, 'destructive' => false, 'idempotent' => false ),
+					'annotations'  => array(
+						'readonly'    => false,
+						'destructive' => false,
+						'idempotent'  => false,
+					),
 					'show_in_rest' => true,
 				),
 			)

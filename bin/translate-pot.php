@@ -84,7 +84,11 @@ fwrite( STDERR, sprintf( "[%s] wrote %s\n", $locale, $po_path ) );
 function parse_pot_blocks( string $path ): array {
 	$lines   = preg_split( '/\R/', (string) file_get_contents( $path ) );
 	$blocks  = array();
-	$current = array( 'comments' => array(), 'msgctxt' => null, 'msgid' => '' );
+	$current = array(
+		'comments' => array(),
+		'msgctxt'  => null,
+		'msgid'    => '',
+	);
 	$mode    = null;
 	$buffer  = '';
 
@@ -106,7 +110,11 @@ function parse_pot_blocks( string $path ): array {
 			$buffer = '';
 			if ( '' !== $current['msgid'] || $current['comments'] || null !== $current['msgctxt'] ) {
 				$blocks[] = $current;
-				$current  = array( 'comments' => array(), 'msgctxt' => null, 'msgid' => '' );
+				$current  = array(
+					'comments' => array(),
+					'msgctxt'  => null,
+					'msgid'    => '',
+				);
 			}
 			continue;
 		}
@@ -164,9 +172,9 @@ function is_suspiciously_identical( array $inputs, array $out ): bool {
 			// e.g. "Talaxie Core", "Talaxie Community", "AI Bot"
 			continue;
 		}
-		$translatable++;
+		++$translatable;
 		if ( ( $out[ $i ] ?? '' ) === $in ) {
-			$same++;
+			++$same;
 		}
 	}
 	if ( $translatable === 0 ) {
@@ -219,14 +227,20 @@ function call_translate( string $url, string $model, array $inputs, string $lang
 		'model'    => $model,
 		'stream'   => false,
 		'messages' => array(
-			array( 'role' => 'system', 'content' => $system ),
+			array(
+				'role'    => 'system',
+				'content' => $system,
+			),
 			array(
 				'role'    => 'user',
 				'content' => "Translate to {$language}. Output JSON array between <BEGIN_JSON>/<END_JSON> only:\n\n"
 					. json_encode( array_values( $inputs ), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ),
 			),
 		),
-		'options'  => array( 'temperature' => 0.1, 'num_ctx' => 16384 ),
+		'options'  => array(
+			'temperature' => 0.1,
+			'num_ctx'     => 16384,
+		),
 	);
 
 	$ch = curl_init( $url );

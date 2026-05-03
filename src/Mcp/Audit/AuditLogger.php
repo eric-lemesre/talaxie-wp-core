@@ -55,8 +55,8 @@ final class AuditLogger {
 		$title = sprintf(
 			'%s — %s — %s',
 			$allowed ? 'allow' : 'deny',
-			$ability !== '' ? $ability : 'unknown',
-			$capability !== '' ? $capability : 'unknown'
+			'' !== $ability ? $ability : 'unknown',
+			'' !== $capability ? $capability : 'unknown'
 		);
 
 		$post_id = wp_insert_post(
@@ -90,11 +90,11 @@ final class AuditLogger {
 	 * @return string
 	 */
 	private static function client_ip(): string {
-		$candidate = $_SERVER['REMOTE_ADDR'] ?? ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-		if ( ! is_string( $candidate ) || '' === $candidate ) {
+		$raw = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '';
+		if ( '' === $raw ) {
 			return '';
 		}
-		$validated = filter_var( $candidate, FILTER_VALIDATE_IP );
+		$validated = filter_var( $raw, FILTER_VALIDATE_IP );
 		return is_string( $validated ) ? $validated : '';
 	}
 

@@ -37,17 +37,29 @@ final class ListPages implements AbilityInterface {
 				'description'         => __( 'List pages. Supports pagination and status filter.', 'talaxie-core' ),
 				'category'            => 'talaxie-core',
 				'input_schema'        => array(
-					'type'       => 'object',
-					'properties' => array(
-						'page'     => array( 'type' => 'integer', 'minimum' => 1, 'default' => 1 ),
-						'per_page' => array( 'type' => 'integer', 'minimum' => 1, 'maximum' => 100, 'default' => 20 ),
+					'type'                 => 'object',
+					'properties'           => array(
+						'page'     => array(
+							'type'    => 'integer',
+							'minimum' => 1,
+							'default' => 1,
+						),
+						'per_page' => array(
+							'type'    => 'integer',
+							'minimum' => 1,
+							'maximum' => 100,
+							'default' => 20,
+						),
 						'status'   => array(
 							'type'    => 'string',
 							'enum'    => array( 'any', 'publish', 'draft', 'pending', 'private' ),
 							'default' => 'publish',
 						),
 						'search'   => array( 'type' => 'string' ),
-						'parent'   => array( 'type' => 'integer', 'minimum' => 0 ),
+						'parent'   => array(
+							'type'    => 'integer',
+							'minimum' => 0,
+						),
 						'_sudo'    => array( 'type' => 'string' ),
 					),
 					'additionalProperties' => false,
@@ -66,12 +78,12 @@ final class ListPages implements AbilityInterface {
 					$status   = isset( $input['status'] ) ? (string) $input['status'] : 'publish';
 
 					$args = array(
-						'post_type'      => 'page',
-						'post_status'    => 'any' === $status ? array( 'publish', 'draft', 'pending', 'private' ) : $status,
-						'posts_per_page' => $per_page,
-						'paged'          => $page,
-						's'              => isset( $input['search'] ) ? (string) $input['search'] : '',
-						'no_found_rows'  => false,
+						'post_type'              => 'page',
+						'post_status'            => 'any' === $status ? array( 'publish', 'draft', 'pending', 'private' ) : $status,
+						'posts_per_page'         => $per_page,
+						'paged'                  => $page,
+						's'                      => isset( $input['search'] ) ? (string) $input['search'] : '',
+						'no_found_rows'          => false,
 						'update_post_meta_cache' => false,
 						'update_post_term_cache' => false,
 					);
@@ -84,12 +96,12 @@ final class ListPages implements AbilityInterface {
 					$items = array();
 					foreach ( $query->posts as $post ) {
 						$items[] = array(
-							'id'      => (int) $post->ID,
-							'title'   => (string) $post->post_title,
-							'status'  => (string) $post->post_status,
-							'slug'    => (string) $post->post_name,
-							'parent'  => (int) $post->post_parent,
-							'date'    => (string) $post->post_date_gmt,
+							'id'         => (int) $post->ID,
+							'title'      => (string) $post->post_title,
+							'status'     => (string) $post->post_status,
+							'slug'       => (string) $post->post_name,
+							'parent'     => (int) $post->post_parent,
+							'date'       => (string) $post->post_date_gmt,
 							'menu_order' => (int) $post->menu_order,
 						);
 					}
@@ -103,7 +115,11 @@ final class ListPages implements AbilityInterface {
 					);
 				},
 				'meta'                => array(
-					'annotations' => array( 'readonly' => true, 'destructive' => false, 'idempotent' => true ),
+					'annotations'  => array(
+						'readonly'    => true,
+						'destructive' => false,
+						'idempotent'  => true,
+					),
 					'show_in_rest' => true,
 				),
 			)

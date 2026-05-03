@@ -1,6 +1,6 @@
 <?php
 /**
- * wp-admin page that exposes the sudo token lifecycle.
+ * Wp-admin page that exposes the sudo token lifecycle.
  *
  * @package Talaxie\Core
  */
@@ -161,10 +161,10 @@ final class AdminPage {
 	public static function handle_create(): void {
 		self::guard();
 
-		$scope_raw = isset( $_POST['scope'] ) ? sanitize_text_field( wp_unslash( (string) $_POST['scope'] ) ) : '';
+		$scope_raw = isset( $_POST['scope'] ) ? sanitize_text_field( wp_unslash( (string) $_POST['scope'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing -- self::guard() already verified the nonce.
 		$scope     = array_values( array_filter( array_map( 'trim', explode( ',', $scope_raw ) ), 'strlen' ) );
-		$ttl_min   = isset( $_POST['ttl_minutes'] ) ? max( 1, (int) $_POST['ttl_minutes'] ) : 15;
-		$single    = ! empty( $_POST['single_use'] );
+		$ttl_min   = isset( $_POST['ttl_minutes'] ) ? max( 1, (int) $_POST['ttl_minutes'] ) : 15; // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$single    = ! empty( $_POST['single_use'] ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
 
 		$result = TokenManager::create( $scope, $ttl_min * MINUTE_IN_SECONDS, $single );
 		if ( $result instanceof \WP_Error ) {
@@ -191,7 +191,7 @@ final class AdminPage {
 	 */
 	public static function handle_revoke(): void {
 		self::guard();
-		$id = isset( $_POST['token_id'] ) ? (int) $_POST['token_id'] : 0;
+		$id = isset( $_POST['token_id'] ) ? (int) $_POST['token_id'] : 0; // phpcs:ignore WordPress.Security.NonceVerification.Missing -- self::guard() already verified the nonce.
 		TokenManager::revoke( $id );
 		wp_safe_redirect( self::page_url() );
 		exit;

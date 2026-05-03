@@ -39,8 +39,8 @@ final class GetPost implements AbilityInterface {
 				'description'         => __( 'Return a single post (id, title, content, status, meta).', 'talaxie-core' ),
 				'category'            => 'talaxie-core',
 				'input_schema'        => array(
-					'type'       => 'object',
-					'properties' => array(
+					'type'                 => 'object',
+					'properties'           => array(
 						'id'    => array(
 							'type'    => 'integer',
 							'minimum' => 1,
@@ -84,7 +84,7 @@ final class GetPost implements AbilityInterface {
 					);
 				},
 				'meta'                => array(
-					'annotations' => array(
+					'annotations'  => array(
 						'readonly'    => true,
 						'destructive' => false,
 						'idempotent'  => true,

@@ -41,8 +41,8 @@ final class UpdatePost implements AbilityInterface {
 				'description'         => __( 'Update an existing post (title, content, excerpt, status, slug). Requires edit_posts.', 'talaxie-core' ),
 				'category'            => 'talaxie-core',
 				'input_schema'        => array(
-					'type'       => 'object',
-					'properties' => array(
+					'type'                 => 'object',
+					'properties'           => array(
 						'id'      => array(
 							'type'    => 'integer',
 							'minimum' => 1,
@@ -125,7 +125,7 @@ final class UpdatePost implements AbilityInterface {
 					);
 				},
 				'meta'                => array(
-					'annotations' => array(
+					'annotations'  => array(
 						'readonly'    => false,
 						'destructive' => false,
 						'idempotent'  => true,

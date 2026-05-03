@@ -15,6 +15,9 @@ use Talaxie\Core\PostTypes\Release;
 
 defined( 'ABSPATH' ) || exit;
 
+/**
+ * Paginated list of talaxie_release entries. Capability: edit_talaxie_releases.
+ */
 final class ListReleases implements AbilityInterface {
 
 	public const ABILITY = 'talaxie-core/releases-list';
@@ -35,10 +38,19 @@ final class ListReleases implements AbilityInterface {
 				'description'         => __( 'List Talaxie releases (CPT). Supports pagination, status filter, and component taxonomy filter.', 'talaxie-core' ),
 				'category'            => 'talaxie-core',
 				'input_schema'        => array(
-					'type'       => 'object',
-					'properties' => array(
-						'page'      => array( 'type' => 'integer', 'minimum' => 1, 'default' => 1 ),
-						'per_page'  => array( 'type' => 'integer', 'minimum' => 1, 'maximum' => 100, 'default' => 20 ),
+					'type'                 => 'object',
+					'properties'           => array(
+						'page'      => array(
+							'type'    => 'integer',
+							'minimum' => 1,
+							'default' => 1,
+						),
+						'per_page'  => array(
+							'type'    => 'integer',
+							'minimum' => 1,
+							'maximum' => 100,
+							'default' => 20,
+						),
 						'status'    => array(
 							'type'    => 'string',
 							'enum'    => array( 'any', 'publish', 'draft', 'pending', 'private' ),
@@ -70,7 +82,7 @@ final class ListReleases implements AbilityInterface {
 						'no_found_rows'  => false,
 					);
 					if ( isset( $input['component'] ) && '' !== $input['component'] ) {
-						$args['tax_query'] = array(
+						$args['tax_query'] = array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query -- single-term filter, indexed.
 							array(
 								'taxonomy' => 'talaxie_component',
 								'field'    => 'slug',
@@ -102,7 +114,11 @@ final class ListReleases implements AbilityInterface {
 					);
 				},
 				'meta'                => array(
-					'annotations' => array( 'readonly' => true, 'destructive' => false, 'idempotent' => true ),
+					'annotations'  => array(
+						'readonly'    => true,
+						'destructive' => false,
+						'idempotent'  => true,
+					),
 					'show_in_rest' => true,
 				),
 			)

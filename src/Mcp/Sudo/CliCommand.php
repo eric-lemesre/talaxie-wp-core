@@ -14,6 +14,8 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Implements `wp talaxie mcp sudo-token` and friends.
  *
+ * Three subcommands are exposed:
+ *
  *     wp talaxie mcp sudo-token --scope=manage_options --ttl=15m
  *     wp talaxie mcp sudo-list
  *     wp talaxie mcp sudo-revoke <id>
@@ -54,8 +56,8 @@ final class CliCommand {
 	 *     wp talaxie mcp sudo-token --scope=manage_options
 	 *     wp talaxie mcp sudo-token --scope=delete_users,edit_users --ttl=30m --single-use
 	 *
-	 * @param array<int, string>           $args Positional args.
-	 * @param array<string, string|bool>   $assoc Named args.
+	 * @param array<int, string>         $args Positional args.
+	 * @param array<string, string|bool> $assoc Named args.
 	 *
 	 * @return void
 	 */
@@ -85,12 +87,13 @@ final class CliCommand {
 	/**
 	 * List active sudo tokens.
 	 *
-	 * @param array<int, string>         $args Positional args.
-	 * @param array<string, string|bool> $assoc Named args.
+	 * @param array<int, string>         $args  Positional args (unused, required by WP-CLI signature).
+	 * @param array<string, string|bool> $assoc Named args (unused, required by WP-CLI signature).
 	 *
 	 * @return void
 	 */
-	public static function cmd_list( array $args, array $assoc ): void {
+	public static function cmd_list( array $args, array $assoc ): void { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
+		unset( $args, $assoc );
 		$tokens = TokenManager::list_active();
 		if ( empty( $tokens ) ) {
 			\WP_CLI::log( 'No active sudo tokens.' );

@@ -23,7 +23,7 @@ defined( 'ABSPATH' ) || exit;
  */
 final class CapabilityGate {
 
-	public const SUDO_INPUT_KEY = '_sudo';
+	public const SUDO_INPUT_KEY      = '_sudo';
 	public const VIRTUAL_SUPER_ADMIN = 'super_admin';
 
 	/**
@@ -32,9 +32,9 @@ final class CapabilityGate {
 	 * Accepts the virtual capability `super_admin` for multisite-only
 	 * abilities — it is not a real WP cap, so it must be handled here.
 	 *
-	 * @param string                $ability_name Fully qualified ability slug.
-	 * @param string                $required_cap Capability the ability needs.
-	 * @param array<string, mixed>  $input        Raw input passed to the permission callback.
+	 * @param string               $ability_name Fully qualified ability slug.
+	 * @param string               $required_cap Capability the ability needs.
+	 * @param array<string, mixed> $input        Raw input passed to the permission callback.
 	 *
 	 * @return bool|\WP_Error true on success, WP_Error on permission denial.
 	 */
@@ -99,6 +99,17 @@ final class CapabilityGate {
 		return current_user_can( $cap );
 	}
 
+	/**
+	 * Emit the talaxie_mcp_audit event consumed by the audit logger.
+	 *
+	 * @param string $ability_name    Ability slug.
+	 * @param string $required_cap    Capability requested.
+	 * @param bool   $sudo_used       Whether a sudo token was used.
+	 * @param bool   $allowed         Outcome of the check.
+	 * @param bool   $dev_mode_bypass Whether the dev-mode bypass produced the verdict.
+	 *
+	 * @return void
+	 */
 	private static function audit( string $ability_name, string $required_cap, bool $sudo_used, bool $allowed, bool $dev_mode_bypass = false ): void {
 		do_action(
 			'talaxie_mcp_audit',

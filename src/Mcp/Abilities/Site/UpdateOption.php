@@ -38,8 +38,8 @@ final class UpdateOption implements AbilityInterface {
 				'description'         => __( 'Update a WordPress option (allowlist enforced). Sudo only, prod-blocked.', 'talaxie-core' ),
 				'category'            => 'talaxie-core',
 				'input_schema'        => array(
-					'type'       => 'object',
-					'properties' => array(
+					'type'                 => 'object',
+					'properties'           => array(
 						'name'  => array( 'type' => 'string' ),
 						'value' => array(
 							'type'        => array( 'string', 'number', 'boolean' ),
@@ -77,7 +77,11 @@ final class UpdateOption implements AbilityInterface {
 					);
 				},
 				'meta'                => array(
-					'annotations' => array( 'readonly' => false, 'destructive' => true, 'idempotent' => true ),
+					'annotations'  => array(
+						'readonly'    => false,
+						'destructive' => true,
+						'idempotent'  => true,
+					),
 					'show_in_rest' => true,
 				),
 			)

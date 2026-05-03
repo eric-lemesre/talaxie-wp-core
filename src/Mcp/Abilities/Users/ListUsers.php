@@ -37,10 +37,19 @@ final class ListUsers implements AbilityInterface {
 				'description'         => __( 'List WordPress users with role and registration date.', 'talaxie-core' ),
 				'category'            => 'talaxie-core',
 				'input_schema'        => array(
-					'type'       => 'object',
-					'properties' => array(
-						'page'     => array( 'type' => 'integer', 'minimum' => 1, 'default' => 1 ),
-						'per_page' => array( 'type' => 'integer', 'minimum' => 1, 'maximum' => 100, 'default' => 50 ),
+					'type'                 => 'object',
+					'properties'           => array(
+						'page'     => array(
+							'type'    => 'integer',
+							'minimum' => 1,
+							'default' => 1,
+						),
+						'per_page' => array(
+							'type'    => 'integer',
+							'minimum' => 1,
+							'maximum' => 100,
+							'default' => 50,
+						),
 						'role'     => array( 'type' => 'string' ),
 						'search'   => array( 'type' => 'string' ),
 						'_sudo'    => array( 'type' => 'string' ),
@@ -95,7 +104,11 @@ final class ListUsers implements AbilityInterface {
 					);
 				},
 				'meta'                => array(
-					'annotations' => array( 'readonly' => true, 'destructive' => false, 'idempotent' => true ),
+					'annotations'  => array(
+						'readonly'    => true,
+						'destructive' => false,
+						'idempotent'  => true,
+					),
 					'show_in_rest' => true,
 				),
 			)

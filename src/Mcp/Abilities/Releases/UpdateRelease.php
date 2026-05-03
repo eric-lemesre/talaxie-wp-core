@@ -15,6 +15,9 @@ use Talaxie\Core\PostTypes\Release;
 
 defined( 'ABSPATH' ) || exit;
 
+/**
+ * Update an existing talaxie_release entry. Capability: edit_talaxie_releases.
+ */
 final class UpdateRelease implements AbilityInterface {
 
 	public const ABILITY = 'talaxie-core/releases-update';
@@ -35,15 +38,24 @@ final class UpdateRelease implements AbilityInterface {
 				'description'         => __( 'Update an existing Talaxie release entry.', 'talaxie-core' ),
 				'category'            => 'talaxie-core',
 				'input_schema'        => array(
-					'type'       => 'object',
-					'properties' => array(
-						'id'         => array( 'type' => 'integer', 'minimum' => 1 ),
+					'type'                 => 'object',
+					'properties'           => array(
+						'id'         => array(
+							'type'    => 'integer',
+							'minimum' => 1,
+						),
 						'title'      => array( 'type' => 'string' ),
 						'content'    => array( 'type' => 'string' ),
 						'excerpt'    => array( 'type' => 'string' ),
-						'status'     => array( 'type' => 'string', 'enum' => array( 'draft', 'pending', 'publish', 'private' ) ),
+						'status'     => array(
+							'type' => 'string',
+							'enum' => array( 'draft', 'pending', 'publish', 'private' ),
+						),
 						'slug'       => array( 'type' => 'string' ),
-						'components' => array( 'type' => 'array', 'items' => array( 'type' => 'string' ) ),
+						'components' => array(
+							'type'  => 'array',
+							'items' => array( 'type' => 'string' ),
+						),
 						'_sudo'      => array( 'type' => 'string' ),
 					),
 					'required'             => array( 'id' ),
@@ -101,7 +113,11 @@ final class UpdateRelease implements AbilityInterface {
 					);
 				},
 				'meta'                => array(
-					'annotations' => array( 'readonly' => false, 'destructive' => false, 'idempotent' => true ),
+					'annotations'  => array(
+						'readonly'    => false,
+						'destructive' => false,
+						'idempotent'  => true,
+					),
 					'show_in_rest' => true,
 				),
 			)

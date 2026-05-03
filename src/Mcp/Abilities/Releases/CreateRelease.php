@@ -15,6 +15,9 @@ use Talaxie\Core\PostTypes\Release;
 
 defined( 'ABSPATH' ) || exit;
 
+/**
+ * Insert a new talaxie_release entry. Capability: edit_talaxie_releases.
+ */
 final class CreateRelease implements AbilityInterface {
 
 	public const ABILITY = 'talaxie-core/releases-create';
@@ -35,8 +38,8 @@ final class CreateRelease implements AbilityInterface {
 				'description'         => __( 'Create a Talaxie release. The bot can publish directly (publish_talaxie_releases is granted to ai_bot).', 'talaxie-core' ),
 				'category'            => 'talaxie-core',
 				'input_schema'        => array(
-					'type'       => 'object',
-					'properties' => array(
+					'type'                 => 'object',
+					'properties'           => array(
 						'title'      => array( 'type' => 'string' ),
 						'content'    => array( 'type' => 'string' ),
 						'excerpt'    => array( 'type' => 'string' ),
@@ -100,7 +103,11 @@ final class CreateRelease implements AbilityInterface {
 					);
 				},
 				'meta'                => array(
-					'annotations' => array( 'readonly' => false, 'destructive' => false, 'idempotent' => false ),
+					'annotations'  => array(
+						'readonly'    => false,
+						'destructive' => false,
+						'idempotent'  => false,
+					),
 					'show_in_rest' => true,
 				),
 			)

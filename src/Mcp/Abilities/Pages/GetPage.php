@@ -37,9 +37,12 @@ final class GetPage implements AbilityInterface {
 				'description'         => __( 'Return a single page by id.', 'talaxie-core' ),
 				'category'            => 'talaxie-core',
 				'input_schema'        => array(
-					'type'       => 'object',
-					'properties' => array(
-						'id'    => array( 'type' => 'integer', 'minimum' => 1 ),
+					'type'                 => 'object',
+					'properties'           => array(
+						'id'    => array(
+							'type'    => 'integer',
+							'minimum' => 1,
+						),
 						'_sudo' => array( 'type' => 'string' ),
 					),
 					'required'             => array( 'id' ),
@@ -76,7 +79,11 @@ final class GetPage implements AbilityInterface {
 					);
 				},
 				'meta'                => array(
-					'annotations' => array( 'readonly' => true, 'destructive' => false, 'idempotent' => true ),
+					'annotations'  => array(
+						'readonly'    => true,
+						'destructive' => false,
+						'idempotent'  => true,
+					),
 					'show_in_rest' => true,
 				),
 			)

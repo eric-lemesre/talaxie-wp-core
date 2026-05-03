@@ -39,9 +39,12 @@ final class DeleteMedia implements AbilityInterface {
 				'description'         => __( 'Permanently delete an attachment and its files. Requires delete_posts (sudo token).', 'talaxie-core' ),
 				'category'            => 'talaxie-core',
 				'input_schema'        => array(
-					'type'       => 'object',
-					'properties' => array(
-						'id'    => array( 'type' => 'integer', 'minimum' => 1 ),
+					'type'                 => 'object',
+					'properties'           => array(
+						'id'    => array(
+							'type'    => 'integer',
+							'minimum' => 1,
+						),
 						'_sudo' => array( 'type' => 'string' ),
 					),
 					'required'             => array( 'id' ),
@@ -73,7 +76,11 @@ final class DeleteMedia implements AbilityInterface {
 					);
 				},
 				'meta'                => array(
-					'annotations' => array( 'readonly' => false, 'destructive' => true, 'idempotent' => false ),
+					'annotations'  => array(
+						'readonly'    => false,
+						'destructive' => true,
+						'idempotent'  => false,
+					),
 					'show_in_rest' => true,
 				),
 			)

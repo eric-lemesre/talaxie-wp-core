@@ -37,10 +37,16 @@ final class UpdateUser implements AbilityInterface {
 				'description'         => __( 'Update a WordPress user (email, display name, role). Requires edit_users via sudo.', 'talaxie-core' ),
 				'category'            => 'talaxie-core',
 				'input_schema'        => array(
-					'type'       => 'object',
-					'properties' => array(
-						'id'           => array( 'type' => 'integer', 'minimum' => 1 ),
-						'email'        => array( 'type' => 'string', 'format' => 'email' ),
+					'type'                 => 'object',
+					'properties'           => array(
+						'id'           => array(
+							'type'    => 'integer',
+							'minimum' => 1,
+						),
+						'email'        => array(
+							'type'   => 'string',
+							'format' => 'email',
+						),
 						'display_name' => array( 'type' => 'string' ),
 						'role'         => array( 'type' => 'string' ),
 						'_sudo'        => array( 'type' => 'string' ),
@@ -86,7 +92,11 @@ final class UpdateUser implements AbilityInterface {
 					return array( 'id' => (int) $result );
 				},
 				'meta'                => array(
-					'annotations' => array( 'readonly' => false, 'destructive' => false, 'idempotent' => true ),
+					'annotations'  => array(
+						'readonly'    => false,
+						'destructive' => false,
+						'idempotent'  => true,
+					),
 					'show_in_rest' => true,
 				),
 			)

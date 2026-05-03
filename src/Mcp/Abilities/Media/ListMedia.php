@@ -37,10 +37,19 @@ final class ListMedia implements AbilityInterface {
 				'description'         => __( 'List attachments in the media library. Supports pagination and mime filter.', 'talaxie-core' ),
 				'category'            => 'talaxie-core',
 				'input_schema'        => array(
-					'type'       => 'object',
-					'properties' => array(
-						'page'      => array( 'type' => 'integer', 'minimum' => 1, 'default' => 1 ),
-						'per_page'  => array( 'type' => 'integer', 'minimum' => 1, 'maximum' => 100, 'default' => 20 ),
+					'type'                 => 'object',
+					'properties'           => array(
+						'page'      => array(
+							'type'    => 'integer',
+							'minimum' => 1,
+							'default' => 1,
+						),
+						'per_page'  => array(
+							'type'    => 'integer',
+							'minimum' => 1,
+							'maximum' => 100,
+							'default' => 20,
+						),
 						'mime_type' => array( 'type' => 'string' ),
 						'_sudo'     => array( 'type' => 'string' ),
 					),
@@ -91,7 +100,11 @@ final class ListMedia implements AbilityInterface {
 					);
 				},
 				'meta'                => array(
-					'annotations' => array( 'readonly' => true, 'destructive' => false, 'idempotent' => true ),
+					'annotations'  => array(
+						'readonly'    => true,
+						'destructive' => false,
+						'idempotent'  => true,
+					),
 					'show_in_rest' => true,
 				),
 			)

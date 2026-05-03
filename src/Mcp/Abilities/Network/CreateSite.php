@@ -38,13 +38,19 @@ final class CreateSite implements AbilityInterface {
 				'description'         => __( 'Create a new site on the network. Multisite + super_admin only, prod-blocked.', 'talaxie-core' ),
 				'category'            => 'talaxie-core',
 				'input_schema'        => array(
-					'type'       => 'object',
-					'properties' => array(
-						'domain' => array( 'type' => 'string' ),
-						'path'   => array( 'type' => 'string', 'default' => '/' ),
-						'title'  => array( 'type' => 'string' ),
-						'admin_email' => array( 'type' => 'string', 'format' => 'email' ),
-						'_sudo'  => array( 'type' => 'string' ),
+					'type'                 => 'object',
+					'properties'           => array(
+						'domain'      => array( 'type' => 'string' ),
+						'path'        => array(
+							'type'    => 'string',
+							'default' => '/',
+						),
+						'title'       => array( 'type' => 'string' ),
+						'admin_email' => array(
+							'type'   => 'string',
+							'format' => 'email',
+						),
+						'_sudo'       => array( 'type' => 'string' ),
 					),
 					'required'             => array( 'domain', 'title' ),
 					'additionalProperties' => false,
@@ -91,7 +97,11 @@ final class CreateSite implements AbilityInterface {
 					);
 				},
 				'meta'                => array(
-					'annotations' => array( 'readonly' => false, 'destructive' => false, 'idempotent' => false ),
+					'annotations'  => array(
+						'readonly'    => false,
+						'destructive' => false,
+						'idempotent'  => false,
+					),
 					'show_in_rest' => true,
 				),
 			)

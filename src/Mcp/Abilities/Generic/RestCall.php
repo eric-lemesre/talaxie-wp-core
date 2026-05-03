@@ -46,8 +46,8 @@ final class RestCall implements AbilityInterface {
 				'description'         => __( 'Forward an HTTP method + path to /wp-json/wp/v2/*. Capability is mapped per HTTP method. Test server only.', 'talaxie-core' ),
 				'category'            => 'talaxie-core',
 				'input_schema'        => array(
-					'type'       => 'object',
-					'properties' => array(
+					'type'                 => 'object',
+					'properties'           => array(
 						'method' => array(
 							'type'    => 'string',
 							'enum'    => array( 'GET', 'POST', 'PUT', 'PATCH', 'DELETE' ),
@@ -57,8 +57,14 @@ final class RestCall implements AbilityInterface {
 							'type'        => 'string',
 							'description' => __( 'Relative path inside wp/v2 (e.g. "posts/123" → /wp-json/wp/v2/posts/123).', 'talaxie-core' ),
 						),
-						'query'  => array( 'type' => 'object', 'additionalProperties' => true ),
-						'body'   => array( 'type' => 'object', 'additionalProperties' => true ),
+						'query'  => array(
+							'type'                 => 'object',
+							'additionalProperties' => true,
+						),
+						'body'   => array(
+							'type'                 => 'object',
+							'additionalProperties' => true,
+						),
 						'_sudo'  => array( 'type' => 'string' ),
 					),
 					'required'             => array( 'path' ),
@@ -99,7 +105,11 @@ final class RestCall implements AbilityInterface {
 					);
 				},
 				'meta'                => array(
-					'annotations' => array( 'readonly' => false, 'destructive' => true, 'idempotent' => false ),
+					'annotations'  => array(
+						'readonly'    => false,
+						'destructive' => true,
+						'idempotent'  => false,
+					),
 					'show_in_rest' => true,
 				),
 			)

@@ -17,8 +17,8 @@ defined( 'ABSPATH' ) || exit;
  */
 final class AuditRetention {
 
-	public const HOOK            = 'talaxie_mcp_audit_purge';
-	public const RETENTION_DAYS  = 30;
+	public const HOOK             = 'talaxie_mcp_audit_purge';
+	public const RETENTION_DAYS   = 30;
 	public const RETENTION_FILTER = 'talaxie_mcp_audit_retention_days';
 
 	/**
@@ -58,7 +58,7 @@ final class AuditRetention {
 	 * @return int Number of audit posts deleted.
 	 */
 	public static function run(): int {
-		$days = (int) apply_filters( self::RETENTION_FILTER, self::RETENTION_DAYS );
+		$days = (int) apply_filters( self::RETENTION_FILTER, self::RETENTION_DAYS ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.DynamicHooknameFound -- self::RETENTION_FILTER expands to talaxie_mcp_audit_retention_days.
 		if ( $days <= 0 ) {
 			return 0;
 		}
@@ -76,7 +76,7 @@ final class AuditRetention {
 						'column'    => 'post_date_gmt',
 					),
 				),
-				'posts_per_page' => 500,
+				'posts_per_page' => 500, // phpcs:ignore WordPress.WP.PostsPerPage.posts_per_page_posts_per_page -- Daily cron purge: bounded scan, never user-driven.
 				'fields'         => 'ids',
 				'no_found_rows'  => true,
 			)
@@ -85,7 +85,7 @@ final class AuditRetention {
 		$deleted = 0;
 		foreach ( $query->posts as $post_id ) {
 			if ( wp_delete_post( (int) $post_id, true ) ) {
-				$deleted++;
+				++$deleted;
 			}
 		}
 
