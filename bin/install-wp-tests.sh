@@ -64,7 +64,10 @@ install_wp() {
 		if [ "$WP_VERSION" == "latest" ]; then
 			archive_version="latest"
 		else
-			archive_version="$WP_VERSION"
+			# wordpress.org publishes wordpress-X.Y.tar.gz for the .0 release
+			# (no "wordpress-X.Y.0.tar.gz"), and wordpress-X.Y.Z.tar.gz for
+			# later patches. Strip the trailing ".0" to land on the right URL.
+			archive_version="${WP_VERSION%.0}"
 		fi
 		download "https://wordpress.org/wordpress-${archive_version}.tar.gz" /tmp/wordpress.tar.gz
 		tar --strip-components=1 -zxmf /tmp/wordpress.tar.gz -C "$WP_CORE_DIR"
