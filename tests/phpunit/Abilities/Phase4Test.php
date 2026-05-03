@@ -108,6 +108,10 @@ final class Phase4Test extends WP_UnitTestCase {
 	}
 
 	public function test_rest_call_get_proxies_to_wp_v2(): void {
+		// rest_do_request() may briefly reference mcp-adapter abilities while
+		// the route table is rebuilt; tolerate that incorrect-usage notice.
+		$this->setExpectedIncorrectUsage( 'WP_Abilities_Registry::get_registered' );
+
 		$post_id = self::factory()->post->create( array( 'post_status' => 'publish' ) );
 
 		wp_set_current_user( $this->admin_id );

@@ -12,6 +12,7 @@ namespace Talaxie\Core;
 defined( 'ABSPATH' ) || exit;
 
 use Talaxie\Core\Mcp\Audit\AuditRetention;
+use Talaxie\Core\Mcp\Cli\InvokeCommand;
 use Talaxie\Core\Mcp\DevMode;
 use Talaxie\Core\Mcp\Drift\RestController as DriftRestController;
 use Talaxie\Core\Mcp\Server as McpServer;
@@ -44,6 +45,7 @@ final class Plugin {
 		SudoAdminPage::register();
 		SudoRestController::register();
 		SudoCliCommand::register();
+		InvokeCommand::register();
 		DriftRestController::register();
 		DevMode::register();
 		register_activation_hook( TALAXIE_CORE_FILE, array( self::class, 'activate' ) );

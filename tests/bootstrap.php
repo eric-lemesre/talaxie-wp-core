@@ -29,6 +29,13 @@ require_once $tests_dir . '/includes/functions.php';
 tests_add_filter(
 	'muplugins_loaded',
 	static function (): void {
+		// Load mcp-adapter if it is installed alongside the plugin under
+		// test (typical local layout). Absent on CI: tests that require
+		// the adapter must mark themselves skipped.
+		$adapter = dirname( __DIR__, 2 ) . '/mcp-adapter/mcp-adapter.php';
+		if ( file_exists( $adapter ) ) {
+			require $adapter;
+		}
 		require dirname( __DIR__ ) . '/talaxie-core.php';
 	}
 );
