@@ -17,7 +17,7 @@ holds only the presentation layer.
 - **Text domain**: `talaxie-core`.
 - **PHP namespace**: `Talaxie\Core\` (PSR-4, autoloaded via Composer).
 - **License**: GPL-2.0-or-later.
-- **Min WordPress**: 6.5.
+- **Min WordPress**: 6.9 (the Abilities API ships with 6.9 core).
 - **Min PHP**: 8.1.
 - **Distribution**: GitHub + planned WordPress.org submission.
 

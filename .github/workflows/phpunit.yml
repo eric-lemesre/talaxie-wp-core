@@ -18,7 +18,7 @@ jobs:
         wp: ['latest']
         include:
           - php: '8.1'
-            wp: '6.5'
+            wp: '6.9'
 
     services:
       mysql:

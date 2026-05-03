@@ -4,7 +4,7 @@
  * Plugin URI:        https://github.com/eric-lemesre/talaxie-wp-core
  * Description:       Companion plugin for the Talaxie community website. Provides custom post types (releases, contributors), a "component" taxonomy, and the integration entry points with GitHub, Discord and Discourse.
  * Version:           0.1.0
- * Requires at least: 6.5
+ * Requires at least: 6.9
  * Requires PHP:      8.1
  * Author:            Talaxie Community
  * Author URI:        https://talaxie.org

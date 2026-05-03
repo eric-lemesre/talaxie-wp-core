@@ -63,7 +63,7 @@ a generic `wp/v2/*` REST proxy as a fallback.
 
 ## Requirements
 
-- WordPress **6.5** or higher
+- WordPress **6.9** or higher (the Abilities API ships with 6.9 core)
 - PHP **8.1** or higher
 
 ## Install (development)
