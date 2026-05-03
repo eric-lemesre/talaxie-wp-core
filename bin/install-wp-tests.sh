@@ -36,7 +36,9 @@ download() {
 
 resolve_wp_version() {
 	if [[ "$WP_VERSION" =~ ^[0-9]+\.[0-9]+(\.[0-9]+)?$ ]]; then
-		WP_TESTS_REF="$WP_VERSION"
+		# wordpress-develop tags strip trailing ".0" (the .0 release is
+		# tagged as "X.Y", later patches as "X.Y.1", "X.Y.2"...).
+		WP_TESTS_REF="${WP_VERSION%.0}"
 	elif [[ "$WP_VERSION" == "nightly" || "$WP_VERSION" == "trunk" ]]; then
 		WP_TESTS_REF="trunk"
 	elif [[ "$WP_VERSION" == "latest" ]]; then
