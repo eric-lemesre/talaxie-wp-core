@@ -124,7 +124,7 @@ msgstr "Créer un nouveau site sur le réseau. Multisite + super_admin uniquemen
 #: src/Mcp/Abilities/Network/CreateSite.php:56
 #: src/Mcp/Abilities/Network/DeleteSite.php:56
 msgid "This ability requires multisite."
-msgstr "Cette capacité nécessite multisite."
+msgstr "Cette fonctionnalité nécessite multisite."
 
 #: src/Mcp/Abilities/Network/CreateSite.php:68
 #: src/Mcp/Abilities/Network/DeleteSite.php:66
@@ -420,13 +420,13 @@ msgstr "Aucune entrée d'audit trouvée."
 
 #: src/Mcp/Audit/AuditPostType.php:43
 msgid "MCP audit log — every ability invocation captured by the capability gate."
-msgstr "Journal d'audit MCP — chaque invocation de capacité capturée par la porte des capacités."
+msgstr "Journal d'audit MCP — chaque invocation de fonctionnalité capturée par le contrôle des capacités."
 
 #. translators: %s: capability slug.
 #: src/Mcp/CapabilityGate.php:67
 #, php-format
 msgid "This ability requires the \"%s\" capability. Provide a sudo token in the \"_sudo\" parameter."
-msgstr "Cette capacité nécessite le \"%s\" capability. Fournissez un jeton sudo dans le paramètre \"_sudo\"."
+msgstr "Cette fonctionnalité nécessite la capacité \"%s\". Fournissez un jeton sudo dans le paramètre \"_sudo\"."
 
 #: src/Mcp/DevMode.php:92
 msgid "Talaxie MCP — TALAXIE_MCP_DEV_MODE is set but ignored."
@@ -442,15 +442,15 @@ msgstr "Talaxie MCP — MODE DEV ACTIF."
 
 #: src/Mcp/DevMode.php:100
 msgid "The capability gate is disabled. Every MCP ability accepts every caller. Remove TALAXIE_MCP_DEV_MODE before going live."
-msgstr "La passerelle des capacités est désactivée. Toute capacité MCP accepte tout appelant. Supprimez TALAXIE_MCP_DEV_MODE avant de passer en production."
+msgstr "Le contrôle des capacités est désactivé. Toute fonctionnalité MCP accepte tout appelant. Supprimez TALAXIE_MCP_DEV_MODE avant de passer en production."
 
 #: src/Mcp/Drift/RestController.php:103
 msgid "These tools are exposed on the production server but their abilities declare is_allowed_on_production() = false."
-msgstr "Ces outils sont exposés sur le serveur de production mais leurs capacités déclarent is_allowed_on_production() = false."
+msgstr "Ces outils sont exposés sur le serveur de production mais leurs fonctionnalités déclarent is_allowed_on_production() = false."
 
 #: src/Mcp/Server.php:135
 msgid "Abilities exposed by the talaxie-core plugin."
-msgstr "Capacités exposées par le plugin talaxie-core."
+msgstr "Fonctionnalités exposées par le plugin talaxie-core."
 
 #: src/Mcp/Server.php:171
 msgid "Talaxie MCP — production"
@@ -458,7 +458,7 @@ msgstr "Talaxie MCP — production"
 
 #: src/Mcp/Server.php:172
 msgid "Production-safe abilities exposed by the Talaxie WordPress site."
-msgstr "Capacités sûres pour la production exposées par le site WordPress Talaxie."
+msgstr "Fonctionnalités sûres pour la production exposées par le site WordPress Talaxie."
 
 #: src/Mcp/Server.php:188
 msgid "Talaxie MCP — test"
@@ -466,7 +466,7 @@ msgstr "Talaxie MCP — test"
 
 #: src/Mcp/Server.php:189
 msgid "All abilities, including destructive ones. Disabled on production instances."
-msgstr "Toutes les capacités, y compris celles destructrices. Désactivé sur les instances de production."
+msgstr "Toutes les fonctionnalités, y compris les destructrices. Désactivé sur les instances de production."
 
 #: src/Mcp/Sudo/AdminPage.php:48
 #: src/Mcp/Sudo/AdminPage.php:49
