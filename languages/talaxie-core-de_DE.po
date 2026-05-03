@@ -1,792 +1,790 @@
-# Copyright (C) 2026 Talaxie Community
-# This file is distributed under the GPL-2.0-or-later.
+# Talaxie Core — translation for de_DE.
 msgid ""
 msgstr ""
 "Project-Id-Version: Talaxie Core 0.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/talaxie-core\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2026-05-03 07:08+0000\n"
+"Language-Team: Talaxie Community\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-05-02T14:24:20+00:00\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: talaxie-core\n"
 
 #. Plugin Name of the plugin
 #: talaxie-core.php:3
 #: src/Mcp/Server.php:134
 msgid "Talaxie Core"
-msgstr ""
+msgstr "Talaxie Core"
 
 #. Plugin URI of the plugin
 #: talaxie-core.php:4
 msgid "https://github.com/eric-lemesre/talaxie-wp-core"
-msgstr ""
+msgstr "https://github.com/eric-lemesre/talaxie-wp-core"
 
 #. Description of the plugin
 #: talaxie-core.php:5
 msgid "Companion plugin for the Talaxie community website. Provides custom post types (releases, contributors), a \"component\" taxonomy, and the integration entry points with GitHub, Discord and Discourse."
-msgstr ""
+msgstr "Companion plugin für die Talaxie Community-Website. Bietet Benutzerdefinierte Post-Typen (Releases, Mitwirkende), eine \"Komponenten\"-Taxonomie und die Integrationseinstiegspunkte mit GitHub, Discord und Discourse."
 
 #. Author of the plugin
 #: talaxie-core.php:9
 msgid "Talaxie Community"
-msgstr ""
+msgstr "Talaxie Community"
 
 #. Author URI of the plugin
 #: talaxie-core.php:10
 msgid "https://talaxie.org"
-msgstr ""
+msgstr "https://talaxie.org"
 
 #: src/Mcp/Abilities/Audit/ListAudit.php:38
 msgid "List MCP audit entries"
-msgstr ""
+msgstr "MCP-Audit-Einträge auflisten"
 
 #: src/Mcp/Abilities/Audit/ListAudit.php:39
 msgid "Return the most recent MCP audit entries (allow/deny, capability, sudo usage). Requires manage_options."
-msgstr ""
+msgstr "Gibt die neuesten MCP-Audit-Einträge (erlauben/verweigern, Fähigkeit, sudo-Verwendung) zurück. Erfordert manage_options."
 
 #: src/Mcp/Abilities/Generic/RestCall.php:45
 msgid "Forward to wp/v2 REST"
-msgstr ""
+msgstr "Weiterleiten an wp/v2 REST"
 
 #: src/Mcp/Abilities/Generic/RestCall.php:46
 msgid "Forward an HTTP method + path to /wp-json/wp/v2/*. Capability is mapped per HTTP method. Test server only."
-msgstr ""
+msgstr "Leitet eine HTTP-Methode + Pfad zu /wp-json/wp/v2/*. Die Berechtigung wird pro HTTP-Methode zugewiesen. Nur Testserver."
 
 #: src/Mcp/Abilities/Generic/RestCall.php:58
 msgid "Relative path inside wp/v2 (e.g. \"posts/123\" → /wp-json/wp/v2/posts/123)."
-msgstr ""
+msgstr "Relativer Pfad innerhalb von wp/v2 (z.B. \"posts/123\" → /wp-json/wp/v2/posts/123)."
 
 #: src/Mcp/Abilities/Generic/RestCall.php:82
 msgid "Invalid path."
-msgstr ""
+msgstr "Ungültiger Pfad."
 
 #: src/Mcp/Abilities/Media/DeleteMedia.php:38
 msgid "Delete media"
-msgstr ""
+msgstr "Medien löschen"
 
 #: src/Mcp/Abilities/Media/DeleteMedia.php:39
 msgid "Permanently delete an attachment and its files. Requires delete_posts (sudo token)."
-msgstr ""
+msgstr "Löscht dauerhaft einen Anhang und seine Dateien. Erfordert delete_posts (sudo-Token)."
 
 #: src/Mcp/Abilities/Media/DeleteMedia.php:62
 msgid "No attachment matches that id."
-msgstr ""
+msgstr "Kein Anhang entspricht dieser ID."
 
 #: src/Mcp/Abilities/Media/DeleteMedia.php:67
 msgid "Could not delete the attachment."
-msgstr ""
+msgstr "Der Anhang konnte nicht gelöscht werden."
 
 #: src/Mcp/Abilities/Media/ListMedia.php:36
 msgid "List media"
-msgstr ""
+msgstr "Medien auflisten"
 
 #: src/Mcp/Abilities/Media/ListMedia.php:37
 msgid "List attachments in the media library. Supports pagination and mime filter."
-msgstr ""
+msgstr "Listet Anhänge in der Mediathek auf. Unterstützt Pagination und MIME-Filter."
 
 #: src/Mcp/Abilities/Media/UploadMedia.php:40
 msgid "Upload media"
-msgstr ""
+msgstr "Medien hochladen"
 
 #: src/Mcp/Abilities/Media/UploadMedia.php:41
 msgid "Create an attachment from a base64-encoded payload. Capability: upload_files."
-msgstr ""
+msgstr "Erstellt einen Anhang aus einer base64-kodierten Payload. Berechtigung: upload_files."
 
 #: src/Mcp/Abilities/Media/UploadMedia.php:66
 msgid "A filename is required."
-msgstr ""
+msgstr "Ein Dateiname ist erforderlich."
 
 #: src/Mcp/Abilities/Media/UploadMedia.php:71
 msgid "data_base64 is not valid base64."
-msgstr ""
+msgstr "data_base64 ist kein gültiges Base64."
 
 #: src/Mcp/Abilities/Media/UploadMedia.php:74
 msgid "Payload exceeds the 16 MiB limit."
-msgstr ""
+msgstr "Die Payload überschreitet die 16 MiB-Grenze."
 
 #: src/Mcp/Abilities/Media/UploadMedia.php:79
 msgid "This file type is not allowed by WordPress."
-msgstr ""
+msgstr "Diese Dateityp wird von WordPress nicht erlaubt."
 
 #: src/Mcp/Abilities/Media/UploadMedia.php:90
 msgid "Could not write the upload to disk."
-msgstr ""
+msgstr "Das Hochladen der Datei auf die Festplatte ist fehlgeschlagen."
 
 #: src/Mcp/Abilities/Network/CreateSite.php:37
 msgid "Create site (multisite)"
-msgstr ""
+msgstr "Website erstellen (Multisite)"
 
 #: src/Mcp/Abilities/Network/CreateSite.php:38
 msgid "Create a new site on the network. Multisite + super_admin only, prod-blocked."
-msgstr ""
+msgstr "Erstelle eine neue Website im Netzwerk. Nur Multisite + super_admin, in der Produktion blockiert."
 
 #: src/Mcp/Abilities/Network/CreateSite.php:56
 #: src/Mcp/Abilities/Network/DeleteSite.php:56
 msgid "This ability requires multisite."
-msgstr ""
+msgstr "Diese Fähigkeit erfordert Multisite."
 
 #: src/Mcp/Abilities/Network/CreateSite.php:68
 #: src/Mcp/Abilities/Network/DeleteSite.php:66
 msgid "Multisite is not active."
-msgstr ""
+msgstr "Multisite ist nicht aktiv."
 
 #: src/Mcp/Abilities/Network/DeleteSite.php:37
 msgid "Delete site (multisite)"
-msgstr ""
+msgstr "Website löschen (multisite)"
 
 #: src/Mcp/Abilities/Network/DeleteSite.php:38
 msgid "Delete a site from the network, including its files. Multisite + super_admin only, prod-blocked."
-msgstr ""
+msgstr "Lösche eine Website aus dem Netzwerk, einschließlich ihrer Dateien. Nur Multisite + super_admin, in der Produktion blockiert."
 
 #: src/Mcp/Abilities/Network/DeleteSite.php:46
 msgid "Also drop the site database tables."
-msgstr ""
+msgstr "Lösche auch die Datenbanktabellen der Website."
 
 #: src/Mcp/Abilities/Network/DeleteSite.php:72
 msgid "Refusing to delete the main site (id 1)."
-msgstr ""
+msgstr "Verweigerung, die Haupt-Website (id 1) zu löschen."
 
 #: src/Mcp/Abilities/Pages/CreatePage.php:36
 msgid "Create page"
-msgstr ""
+msgstr "Seite erstellen"
 
 #: src/Mcp/Abilities/Pages/CreatePage.php:37
 msgid "Create a new page (defaults to draft). Requires edit_pages."
-msgstr ""
+msgstr "Erstelle eine neue Seite (Standard ist Entwurfsstatus). Erfordert edit_pages."
 
 #: src/Mcp/Abilities/Pages/DeletePage.php:40
 msgid "Delete page"
-msgstr ""
+msgstr "Seite löschen"
 
 #: src/Mcp/Abilities/Pages/DeletePage.php:41
 msgid "Move a page to trash, or permanently delete it. Requires delete_pages (sudo token)."
-msgstr ""
+msgstr "Verschiebe eine Seite in den Papierkorb oder lösche sie permanent. Erfordert delete_pages (sudo-Token)."
 
 #: src/Mcp/Abilities/Pages/DeletePage.php:66
 #: src/Mcp/Abilities/Pages/GetPage.php:60
 #: src/Mcp/Abilities/Pages/UpdatePage.php:75
 msgid "No page matches that id."
-msgstr ""
+msgstr "Keine Seite entspricht dieser ID."
 
 #: src/Mcp/Abilities/Pages/DeletePage.php:71
 msgid "Could not delete the page."
-msgstr ""
+msgstr "Die Seite konnte nicht gelöscht werden."
 
 #: src/Mcp/Abilities/Pages/GetPage.php:36
 msgid "Get page"
-msgstr ""
+msgstr "Seite abrufen"
 
 #: src/Mcp/Abilities/Pages/GetPage.php:37
 msgid "Return a single page by id."
-msgstr ""
+msgstr "Gibt eine einzelne Seite nach ID zurück."
 
 #: src/Mcp/Abilities/Pages/ListPages.php:36
 msgid "List pages"
-msgstr ""
+msgstr "Seiten auflisten"
 
 #: src/Mcp/Abilities/Pages/ListPages.php:37
 msgid "List pages. Supports pagination and status filter."
-msgstr ""
+msgstr "Listet Seiten auf. Unterstützt Pagination und Statusfilter."
 
 #: src/Mcp/Abilities/Pages/UpdatePage.php:36
 msgid "Update page"
-msgstr ""
+msgstr "Seite aktualisieren"
 
 #: src/Mcp/Abilities/Pages/UpdatePage.php:37
 msgid "Update an existing page (title, content, status, slug, parent, menu_order)."
-msgstr ""
+msgstr "Aktualisiert eine bestehende Seite (Titel, Inhalte, Status, Slug, Eltern, Menüreihenfolge)."
 
 #: src/Mcp/Abilities/Pages/UpdatePage.php:66
 msgid "You are not allowed to edit this page."
-msgstr ""
+msgstr "Du bist nicht berechtigt, diese Seite zu bearbeiten."
 
 #: src/Mcp/Abilities/Plugins/ActivatePlugin.php:37
 msgid "Activate plugin"
-msgstr ""
+msgstr "Plugin aktivieren"
 
 #: src/Mcp/Abilities/Plugins/ActivatePlugin.php:38
 msgid "Activate an installed plugin by its file path. Sudo only, prod-blocked."
-msgstr ""
+msgstr "Aktiviere ein installiertes Plugin durch seinen Dateipfad. Nur sudo, in der Produktion blockiert."
 
 #: src/Mcp/Abilities/Plugins/ActivatePlugin.php:60
 msgid "Invalid plugin file."
-msgstr ""
+msgstr "Ungültige Plugin-Datei."
 
 #: src/Mcp/Abilities/Plugins/ListPlugins.php:36
 msgid "List plugins"
-msgstr ""
+msgstr "Plugins auflisten"
 
 #: src/Mcp/Abilities/Plugins/ListPlugins.php:37
 msgid "List installed WordPress plugins (file path, name, version, active state)."
-msgstr ""
+msgstr "Listet installierte WordPress-Plugins auf (Dateipfad, Name, Version, aktiver Zustand)."
 
 #: src/Mcp/Abilities/Posts/CreatePost.php:39
 msgid "Create post"
-msgstr ""
+msgstr "Beitrag erstellen"
 
 #: src/Mcp/Abilities/Posts/CreatePost.php:40
 msgid "Create a new post (defaults to draft). Requires edit_posts."
-msgstr ""
+msgstr "Erstelle einen neuen Beitrag (Standard ist Entwurf). Erfordert edit_posts."
 
 #: src/Mcp/Abilities/Posts/GetPost.php:38
 msgid "Get post"
-msgstr ""
+msgstr "Beitrag abrufen"
 
 #: src/Mcp/Abilities/Posts/GetPost.php:39
 msgid "Return a single post (id, title, content, status, meta)."
-msgstr ""
+msgstr "Gibt einen einzelnen Beitrag zurück (id, Titel, Inhalt, Status, Meta)."
 
 #: src/Mcp/Abilities/Posts/GetPost.php:68
 #: src/Mcp/Abilities/Posts/UpdatePost.php:91
 msgid "No post matches that id."
-msgstr ""
+msgstr "Kein Beitrag entspricht dieser ID."
 
 #: src/Mcp/Abilities/Posts/ListPosts.php:38
 msgid "List posts"
-msgstr ""
+msgstr "Beiträge auflisten"
 
 #: src/Mcp/Abilities/Posts/ListPosts.php:39
 msgid "List posts visible to the caller. Supports pagination, status, and search."
-msgstr ""
+msgstr "Listet die für den Anrufer sichtbaren Beiträge auf. Unterstützt Pagination, Status und Suche."
 
 #: src/Mcp/Abilities/Posts/UpdatePost.php:40
 msgid "Update post"
-msgstr ""
+msgstr "Beitrag aktualisieren"
 
 #: src/Mcp/Abilities/Posts/UpdatePost.php:41
 msgid "Update an existing post (title, content, excerpt, status, slug). Requires edit_posts."
-msgstr ""
+msgstr "Aktualisiert einen bestehenden Beitrag (Titel, Inhalt, Auszug, Status, Slug). Erfordert edit_posts."
 
 #: src/Mcp/Abilities/Posts/UpdatePost.php:77
 msgid "You are not allowed to edit this post."
-msgstr ""
+msgstr "Du bist nicht berechtigt, diesen Beitrag zu bearbeiten."
 
 #: src/Mcp/Abilities/Releases/CreateRelease.php:34
 msgid "Create release"
-msgstr ""
+msgstr "Release erstellen"
 
 #: src/Mcp/Abilities/Releases/CreateRelease.php:35
 msgid "Create a Talaxie release. The bot can publish directly (publish_talaxie_releases is granted to ai_bot)."
-msgstr ""
+msgstr "Erstelle eine Talaxie-Veröffentlichung. Der Bot kann direkt veröffentlichen (publish_talaxie_releases wird ai_bot gewährt)."
 
 #: src/Mcp/Abilities/Releases/DeleteRelease.php:38
 msgid "Delete release"
-msgstr ""
+msgstr "Release löschen"
 
 #: src/Mcp/Abilities/Releases/DeleteRelease.php:39
 msgid "Trash or permanently delete a Talaxie release entry."
-msgstr ""
+msgstr "Lösche eine Talaxie-Veröffentlichungs-Einträge im Papierkorb oder permanent."
 
 #: src/Mcp/Abilities/Releases/DeleteRelease.php:64
 #: src/Mcp/Abilities/Releases/GetRelease.php:58
 #: src/Mcp/Abilities/Releases/UpdateRelease.php:64
 msgid "No release matches that id."
-msgstr ""
+msgstr "Keine Veröffentlichung entspricht dieser ID."
 
 #: src/Mcp/Abilities/Releases/DeleteRelease.php:69
 msgid "Could not delete the release."
-msgstr ""
+msgstr "Die Veröffentlichung konnte nicht gelöscht werden."
 
 #: src/Mcp/Abilities/Releases/GetRelease.php:34
 msgid "Get release"
-msgstr ""
+msgstr "Release abrufen"
 
 #: src/Mcp/Abilities/Releases/GetRelease.php:35
 msgid "Return a single Talaxie release entry."
-msgstr ""
+msgstr "Gibt eine einzelne Talaxie-Veröffentlichungs-Einträge zurück."
 
 #: src/Mcp/Abilities/Releases/ListReleases.php:34
 msgid "List releases"
-msgstr ""
+msgstr "Releases auflisten"
 
 #: src/Mcp/Abilities/Releases/ListReleases.php:35
 msgid "List Talaxie releases (CPT). Supports pagination, status filter, and component taxonomy filter."
-msgstr ""
+msgstr "Listet Talaxie-Veröffentlichungen (CPT) auf. Unterstützt Pagination, Statusfilter und Komponenten-Taxonomie-Filter."
 
 #: src/Mcp/Abilities/Releases/UpdateRelease.php:34
 msgid "Update release"
-msgstr ""
+msgstr "Release aktualisieren"
 
 #: src/Mcp/Abilities/Releases/UpdateRelease.php:35
 msgid "Update an existing Talaxie release entry."
-msgstr ""
+msgstr "Aktualisiert einen bestehenden Talaxie-Veröffentlichungs-Einträge."
 
 #: src/Mcp/Abilities/Site/GetInfo.php:37
 msgid "Get site info"
-msgstr ""
+msgstr "Website-Info abrufen"
 
 #: src/Mcp/Abilities/Site/GetInfo.php:38
 msgid "Return basic public information about the WordPress site (name, URL, environment, version)."
-msgstr ""
+msgstr "Gibt grundlegende öffentliche Informationen über die WordPress-Website zurück (Name, URL, Umgebung, Version)."
 
 #: src/Mcp/Abilities/Site/GetOption.php:60
 msgid "Get site option"
-msgstr ""
+msgstr "Website-Option abrufen"
 
 #: src/Mcp/Abilities/Site/GetOption.php:61
 msgid "Return the value of a WordPress option (allowlist enforced)."
-msgstr ""
+msgstr "Den Wert einer WordPress-Option zurückgeben (erlaubte Liste)."
 
 #: src/Mcp/Abilities/Site/GetOption.php:84
 #: src/Mcp/Abilities/Site/UpdateOption.php:67
 msgid "This option is not in the MCP allowlist."
-msgstr ""
+msgstr "Diese Option ist nicht in der MCP-Erlaubnis-Liste enthalten."
 
 #: src/Mcp/Abilities/Site/UpdateOption.php:37
 msgid "Update site option"
-msgstr ""
+msgstr "Website-Option aktualisieren"
 
 #: src/Mcp/Abilities/Site/UpdateOption.php:38
 msgid "Update a WordPress option (allowlist enforced). Sudo only, prod-blocked."
-msgstr ""
+msgstr "Aktualisiere eine WordPress-Option (erlaubte Liste). Nur sudo, prod-blockiert."
 
 #: src/Mcp/Abilities/Site/UpdateOption.php:46
 msgid "Scalar option value (string, number, or boolean)."
-msgstr ""
+msgstr "Skalare Optionswerte (String, Zahl oder Boolean)."
 
 #: src/Mcp/Abilities/Users/CreateUser.php:36
 msgid "Create user"
-msgstr ""
+msgstr "Benutzer erstellen"
 
 #: src/Mcp/Abilities/Users/CreateUser.php:37
 msgid "Create a WordPress user. Requires create_users via sudo. Disabled on production."
-msgstr ""
+msgstr "Erstelle einen WordPress-Benutzer. Erfordert create_users über sudo. Deaktiviert auf Produktion."
 
 #: src/Mcp/Abilities/Users/CreateUser.php:66
 msgid "A login and an email are required."
-msgstr ""
+msgstr "Ein Anmeldename und eine E-Mail sind erforderlich."
 
 #: src/Mcp/Abilities/Users/CreateUser.php:69
 #: src/Mcp/Abilities/Users/UpdateUser.php:76
 msgid "Unknown role."
-msgstr ""
+msgstr "Unbekannte Rolle."
 
 #: src/Mcp/Abilities/Users/GetUser.php:36
 msgid "Get user"
-msgstr ""
+msgstr "Benutzer abrufen"
 
 #: src/Mcp/Abilities/Users/GetUser.php:37
 msgid "Return one WordPress user (id, login, email, roles)."
-msgstr ""
+msgstr "Gibt einen WordPress-Benutzer zurück (id, Anmeldename, E-Mail, Rollen)."
 
 #: src/Mcp/Abilities/Users/GetUser.php:60
 #: src/Mcp/Abilities/Users/UpdateUser.php:63
 msgid "No user matches that id."
-msgstr ""
+msgstr "Kein Benutzer entspricht dieser ID."
 
 #: src/Mcp/Abilities/Users/ListUsers.php:36
 msgid "List users"
-msgstr ""
+msgstr "Benutzer listen"
 
 #: src/Mcp/Abilities/Users/ListUsers.php:37
 msgid "List WordPress users with role and registration date."
-msgstr ""
+msgstr "Listet WordPress-Benutzer mit Rolle und Registrierungsdatum auf."
 
 #: src/Mcp/Abilities/Users/UpdateUser.php:36
 msgid "Update user"
-msgstr ""
+msgstr "Benutzer aktualisieren"
 
 #: src/Mcp/Abilities/Users/UpdateUser.php:37
 msgid "Update a WordPress user (email, display name, role). Requires edit_users via sudo."
-msgstr ""
+msgstr "Aktualisiere einen WordPress-Benutzer (E-Mail, Anzeigename, Rolle). Erfordert edit_users über sudo."
 
 #: src/Mcp/Audit/AuditPostType.php:36
 msgctxt "post type general name"
 msgid "MCP audit"
-msgstr ""
+msgstr "MCP-Audit"
 
 #: src/Mcp/Audit/AuditPostType.php:37
 msgctxt "post type singular name"
 msgid "MCP audit entry"
-msgstr ""
+msgstr "MCP-Audit-Eintrag"
 
 #: src/Mcp/Audit/AuditPostType.php:38
 msgctxt "admin menu"
 msgid "MCP audit"
-msgstr ""
+msgstr "MCP-Audit"
 
 #: src/Mcp/Audit/AuditPostType.php:39
 msgid "All audit entries"
-msgstr ""
+msgstr "Alle Audit-Einträge"
 
 #: src/Mcp/Audit/AuditPostType.php:40
 msgid "Search audit entries"
-msgstr ""
+msgstr "Audit-Einträge suchen"
 
 #: src/Mcp/Audit/AuditPostType.php:41
 msgid "No audit entry found."
-msgstr ""
+msgstr "Kein Audit-Eintrag gefunden."
 
 #: src/Mcp/Audit/AuditPostType.php:43
 msgid "MCP audit log — every ability invocation captured by the capability gate."
-msgstr ""
+msgstr "MCP-Audit-Protokoll — jede Fähigkeitsausführung erfasst durch das Capability-Gate."
 
 #. translators: %s: capability slug.
 #: src/Mcp/CapabilityGate.php:67
 #, php-format
 msgid "This ability requires the \"%s\" capability. Provide a sudo token in the \"_sudo\" parameter."
-msgstr ""
+msgstr "Diese Fähigkeit erfordert die \"%s\"-Fähigkeit. Bitte gib einen sudo-Token in dem \"_sudo\"-Parameter an."
 
 #: src/Mcp/DevMode.php:92
 msgid "Talaxie MCP — TALAXIE_MCP_DEV_MODE is set but ignored."
-msgstr ""
+msgstr "Talaxie MCP — TALAXIE_MCP_DEV_MODE ist gesetzt, aber ignoriert."
 
 #: src/Mcp/DevMode.php:93
 msgid "The dev-mode bypass only activates when WP_ENVIRONMENT_TYPE is local or development. Update wp-config or remove the constant."
-msgstr ""
+msgstr "Der Dev-Modus-Bypass wird nur aktiviert, wenn WP_ENVIRONMENT_TYPE lokal oder Entwicklung ist. Aktualisieren Sie wp-config oder entfernen Sie die Konstante."
 
 #: src/Mcp/DevMode.php:99
 msgid "Talaxie MCP — DEV MODE ACTIVE."
-msgstr ""
+msgstr "Talaxie MCP — DEV MODE AKTIV."
 
 #: src/Mcp/DevMode.php:100
 msgid "The capability gate is disabled. Every MCP ability accepts every caller. Remove TALAXIE_MCP_DEV_MODE before going live."
-msgstr ""
+msgstr "Das Capability-Gate ist deaktiviert. Jede MCP-Fähigkeit akzeptiert jeden Anrufer. Entfernen Sie TALAXIE_MCP_DEV_MODE bevor Sie live gehen."
 
 #: src/Mcp/Drift/RestController.php:103
 msgid "These tools are exposed on the production server but their abilities declare is_allowed_on_production() = false."
-msgstr ""
+msgstr "Diese Tools sind auf dem Produktionsserver exponiert, aber ihre Fähigkeiten erklären is_allowed_on_production() = false."
 
 #: src/Mcp/Server.php:135
 msgid "Abilities exposed by the talaxie-core plugin."
-msgstr ""
+msgstr "Fähigkeiten, die vom talaxie-core-Plugin exponiert werden."
 
 #: src/Mcp/Server.php:171
 msgid "Talaxie MCP — production"
-msgstr ""
+msgstr "Talaxie MCP — Produktion"
 
 #: src/Mcp/Server.php:172
 msgid "Production-safe abilities exposed by the Talaxie WordPress site."
-msgstr ""
+msgstr "Produktionssichere Fähigkeiten, exponiert durch die Talaxie WordPress-Seite."
 
 #: src/Mcp/Server.php:188
 msgid "Talaxie MCP — test"
-msgstr ""
+msgstr "Talaxie MCP — Test"
 
 #: src/Mcp/Server.php:189
 msgid "All abilities, including destructive ones. Disabled on production instances."
-msgstr ""
+msgstr "Alle Fähigkeiten, einschließlich destructiver. Deaktiviert auf Produktionsinstanzen."
 
 #: src/Mcp/Sudo/AdminPage.php:48
 #: src/Mcp/Sudo/AdminPage.php:49
 #: src/Mcp/Sudo/AdminPage.php:71
 msgid "MCP Sudo"
-msgstr ""
+msgstr "MCP Sudo"
 
 #: src/Mcp/Sudo/AdminPage.php:63
 #: src/Mcp/Sudo/AdminPage.php:219
 msgid "You are not allowed to manage MCP sudo tokens."
-msgstr ""
+msgstr "Sie sind nicht berechtigt, MCP sudo-Tokens zu verwalten."
 
 #: src/Mcp/Sudo/AdminPage.php:75
 msgid "Token created."
-msgstr ""
+msgstr "Token erstellt."
 
 #: src/Mcp/Sudo/AdminPage.php:76
 msgid "Copy it now — it will not be shown again."
-msgstr ""
+msgstr "Kopieren Sie es jetzt — es wird nicht noch einmal angezeigt."
 
 #: src/Mcp/Sudo/AdminPage.php:78
 msgid "Expires (UTC):"
-msgstr ""
+msgstr "Läuft ab (UTC):"
 
 #: src/Mcp/Sudo/AdminPage.php:82
 msgid "Create a sudo token"
-msgstr ""
+msgstr "Ein sudo-Token erstellen"
 
 #: src/Mcp/Sudo/AdminPage.php:89
 #: src/Mcp/Sudo/AdminPage.php:118
 msgid "Scope"
-msgstr ""
+msgstr "Bereich"
 
 #: src/Mcp/Sudo/AdminPage.php:91
 msgid "Comma-separated capability list. The token will only validate for these capabilities."
-msgstr ""
+msgstr "Kommagetrennte Capability-Liste. Das Token ist nur für diese Fähigkeiten gültig."
 
 #: src/Mcp/Sudo/AdminPage.php:94
 msgid "TTL (minutes)"
-msgstr ""
+msgstr "TTL (Minuten)"
 
 #: src/Mcp/Sudo/AdminPage.php:102
 #: src/Mcp/Sudo/AdminPage.php:120
 msgid "Single-use"
-msgstr ""
+msgstr "Einmalige Verwendung"
 
 #: src/Mcp/Sudo/AdminPage.php:104
 msgid "Invalidate after the first successful validation."
-msgstr ""
+msgstr "Nach der ersten erfolgreichen Validierung ungültig machen."
 
 #: src/Mcp/Sudo/AdminPage.php:108
 msgid "Generate token"
-msgstr ""
+msgstr "Token generieren"
 
 #: src/Mcp/Sudo/AdminPage.php:111
 msgid "Active tokens"
-msgstr ""
+msgstr "Aktive Tokens"
 
 #: src/Mcp/Sudo/AdminPage.php:114
 msgid "No active sudo tokens."
-msgstr ""
+msgstr "Keine aktiven sudo-Tokens."
 
 #: src/Mcp/Sudo/AdminPage.php:117
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #: src/Mcp/Sudo/AdminPage.php:119
 msgid "Expires (UTC)"
-msgstr ""
+msgstr "Läuft ab (UTC)"
 
 #: src/Mcp/Sudo/AdminPage.php:121
 msgid "Uses"
-msgstr ""
+msgstr "Verwendet"
 
 #: src/Mcp/Sudo/AdminPage.php:122
 msgid "Created by"
-msgstr ""
+msgstr "Erstellt von"
 
 #: src/Mcp/Sudo/AdminPage.php:123
 msgid "Actions"
-msgstr ""
+msgstr "Aktionen"
 
 #: src/Mcp/Sudo/AdminPage.php:132
 msgid "yes"
-msgstr ""
+msgstr "ja"
 
 #: src/Mcp/Sudo/AdminPage.php:132
 msgid "no"
-msgstr ""
+msgstr "nein"
 
 #: src/Mcp/Sudo/AdminPage.php:140
 msgid "Revoke"
-msgstr ""
+msgstr "Widerrufen"
 
 #: src/Mcp/Sudo/AdminPage.php:149
 msgid "Revoke all active tokens"
-msgstr ""
+msgstr "Alle aktiven Tokens widerrufen"
 
 #: src/Mcp/Sudo/RestController.php:59
 msgid "Capabilities the token grants."
-msgstr ""
+msgstr "Berechtigungen, die das Token gewährt."
 
 #: src/Mcp/Sudo/RestController.php:64
 msgid "Lifetime in seconds (capped server-side)."
-msgstr ""
+msgstr "Lebensdauer in Sekunden (serverseitig begrenzt)."
 
 #: src/Mcp/Sudo/RestController.php:112
 msgid "manage_options is required to manage sudo tokens."
-msgstr ""
+msgstr "manage_options ist erforderlich, um sudo-Tokens zu verwalten."
 
 #: src/Mcp/Sudo/TokenManager.php:42
 msgid "A sudo token must declare at least one capability in its scope."
-msgstr ""
+msgstr "Ein sudo-Token muss mindestens eine Berechtigung in seinem Geltungsbereich erklären."
 
 #: src/Mcp/Sudo/TokenManager.php:57
 msgid "Could not hash the sudo token."
-msgstr ""
+msgstr "Das sudo-Token konnte nicht gehasht werden."
 
 #: src/Mcp/Sudo/TokenManager.php:84
 msgid "Could not persist the sudo token."
-msgstr ""
+msgstr "Das sudo-Token konnte nicht persistent gespeichert werden."
 
 #: src/PostTypes/Contributor.php:28
 msgctxt "post type general name"
 msgid "Contributors"
-msgstr ""
+msgstr "Mitarbeiter"
 
 #: src/PostTypes/Contributor.php:29
 msgctxt "post type singular name"
 msgid "Contributor"
-msgstr ""
+msgstr "Mitarbeiter"
 
 #: src/PostTypes/Contributor.php:30
 msgctxt "admin menu"
 msgid "Contributors"
-msgstr ""
+msgstr "Mitarbeiter"
 
 #: src/PostTypes/Contributor.php:31
 msgctxt "add new on admin bar"
 msgid "Contributor"
-msgstr ""
+msgstr "Mitarbeiter"
 
 #: src/PostTypes/Contributor.php:32
 #: src/PostTypes/Release.php:32
 msgid "Add new"
-msgstr ""
+msgstr "Neu hinzufügen"
 
 #: src/PostTypes/Contributor.php:33
 msgid "Add new contributor"
-msgstr ""
+msgstr "Neuen Mitarbeiter hinzufügen"
 
 #: src/PostTypes/Contributor.php:34
 msgid "New contributor"
-msgstr ""
+msgstr "Neuer Mitarbeiter"
 
 #: src/PostTypes/Contributor.php:35
 msgid "Edit contributor"
-msgstr ""
+msgstr "Mitarbeiter bearbeiten"
 
 #: src/PostTypes/Contributor.php:36
 msgid "View contributor"
-msgstr ""
+msgstr "Mitarbeiter anzeigen"
 
 #: src/PostTypes/Contributor.php:37
 msgid "All contributors"
-msgstr ""
+msgstr "Alle Mitarbeiter"
 
 #: src/PostTypes/Contributor.php:38
 msgid "Search contributors"
-msgstr ""
+msgstr "Mitarbeiter suchen"
 
 #: src/PostTypes/Contributor.php:39
 msgid "No contributor found."
-msgstr ""
+msgstr "Kein Mitarbeiter gefunden."
 
 #: src/PostTypes/Contributor.php:40
 msgid "No contributor found in trash."
-msgstr ""
+msgstr "Kein Beitragender im Papierkorb gefunden."
 
 #: src/PostTypes/Contributor.php:41
 msgid "Avatar"
-msgstr ""
+msgstr "Avatar"
 
 #: src/PostTypes/Contributor.php:42
 msgid "Set avatar"
-msgstr ""
+msgstr "Set avatar"
 
 #: src/PostTypes/Contributor.php:43
 msgid "Remove avatar"
-msgstr ""
+msgstr "Entferne Avatar"
 
 #: src/PostTypes/Contributor.php:44
 msgid "Use as avatar"
-msgstr ""
+msgstr "Verwende als Avatar"
 
 #: src/PostTypes/Contributor.php:49
 msgid "Members of the Talaxie community recognized for their contributions."
-msgstr ""
+msgstr "Mitglieder der Talaxie-Community, die für ihre Beiträge anerkannt werden."
 
 #: src/PostTypes/Release.php:28
 msgctxt "post type general name"
 msgid "Releases"
-msgstr ""
+msgstr "Veröffentlichungen"
 
 #: src/PostTypes/Release.php:29
 msgctxt "post type singular name"
 msgid "Release"
-msgstr ""
+msgstr "Veröffentlichung"
 
 #: src/PostTypes/Release.php:30
 msgctxt "admin menu"
 msgid "Releases"
-msgstr ""
+msgstr "Veröffentlichungen"
 
 #: src/PostTypes/Release.php:31
 msgctxt "add new on admin bar"
 msgid "Release"
-msgstr ""
+msgstr "Veröffentlichung"
 
 #: src/PostTypes/Release.php:33
 msgid "Add new release"
-msgstr ""
+msgstr "Neue Veröffentlichung hinzufügen"
 
 #: src/PostTypes/Release.php:34
 msgid "New release"
-msgstr ""
+msgstr "Neue Veröffentlichung"
 
 #: src/PostTypes/Release.php:35
 msgid "Edit release"
-msgstr ""
+msgstr "Veröffentlichung bearbeiten"
 
 #: src/PostTypes/Release.php:36
 msgid "View release"
-msgstr ""
+msgstr "Veröffentlichung anzeigen"
 
 #: src/PostTypes/Release.php:37
 msgid "All releases"
-msgstr ""
+msgstr "Alle Veröffentlichungen"
 
 #: src/PostTypes/Release.php:38
 msgid "Search releases"
-msgstr ""
+msgstr "Suche Veröffentlichungen"
 
 #: src/PostTypes/Release.php:39
 msgid "No release found."
-msgstr ""
+msgstr "Keine Veröffentlichung gefunden."
 
 #: src/PostTypes/Release.php:40
 msgid "No release found in trash."
-msgstr ""
+msgstr "Keine Veröffentlichung im Papierkorb gefunden."
 
 #: src/PostTypes/Release.php:41
 msgid "Release artwork"
-msgstr ""
+msgstr "Veröffentlichungs-Artwork"
 
 #: src/PostTypes/Release.php:42
 msgid "Set release artwork"
-msgstr ""
+msgstr "Set release artwork"
 
 #: src/PostTypes/Release.php:43
 msgid "Remove release artwork"
-msgstr ""
+msgstr "Entferne Veröffentlichungs-Artwork"
 
 #: src/PostTypes/Release.php:44
 msgid "Use as release artwork"
-msgstr ""
+msgstr "Verwende als Veröffentlichungs-Artwork"
 
 #: src/PostTypes/Release.php:49
 msgid "Talaxie public releases (binaries, changelogs, milestones)."
-msgstr ""
+msgstr "Talaxie öffentliche Veröffentlichungen (Binärdateien, Changelogs, Meilensteine)."
 
 #: src/Roles/AiBotRole.php:68
 msgid "AI Bot"
-msgstr ""
+msgstr "AI Bot"
 
 #: src/Taxonomies/Component.php:30
 msgctxt "taxonomy general name"
 msgid "Components"
-msgstr ""
+msgstr "Komponenten"
 
 #: src/Taxonomies/Component.php:31
 msgctxt "taxonomy singular name"
 msgid "Component"
-msgstr ""
+msgstr "Komponente"
 
 #: src/Taxonomies/Component.php:32
 msgid "Search components"
-msgstr ""
+msgstr "Komponenten suchen"
 
 #: src/Taxonomies/Component.php:33
 msgid "All components"
-msgstr ""
+msgstr "Alle Komponenten"
 
 #: src/Taxonomies/Component.php:34
 msgid "Edit component"
-msgstr ""
+msgstr "Komponente bearbeiten"
 
 #: src/Taxonomies/Component.php:35
 msgid "Update component"
-msgstr ""
+msgstr "Komponente aktualisieren"
 
 #: src/Taxonomies/Component.php:36
 msgid "Add new component"
-msgstr ""
+msgstr "Neue Komponente hinzufügen"
 
 #: src/Taxonomies/Component.php:37
 msgid "New component name"
-msgstr ""
+msgstr "Name der neuen Komponente"
 
 #: src/Taxonomies/Component.php:38
 msgid "Components"
-msgstr ""
+msgstr "Komponenten"
 
 #: src/Taxonomies/Component.php:43
 msgid "Talaxie components (e.g. tCore, tDBInput, tFileInputDelimited)."
-msgstr ""
+msgstr "Talaxie-Komponenten (z. B. tCore, tDBInput, tFileInputDelimited)."
 
 #: talaxie-core.php:33
 msgid "Talaxie Core: vendor/autoload.php is missing. Run \"composer install\" inside the plugin folder."
-msgstr ""
+msgstr "Talaxie Core: vendor/autoload.php fehlt. Führen Sie \"composer install\" im Plugin-Ordner aus."
+
